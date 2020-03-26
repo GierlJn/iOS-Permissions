@@ -9,23 +9,29 @@
 /* Begin PBXBuildFile section */
 		B9ABA2CB241B721300F324F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9ABA2CA241B721300F324F0 /* AppDelegate.swift */; };
 		B9ABA2CD241B721300F324F0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9ABA2CC241B721300F324F0 /* SceneDelegate.swift */; };
-		B9ABA2CF241B721300F324F0 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9ABA2CE241B721300F324F0 /* FirstViewController.swift */; };
+		B9ABA2CF241B721300F324F0 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9ABA2CE241B721300F324F0 /* CameraViewController.swift */; };
 		B9ABA2D1241B721300F324F0 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9ABA2D0241B721300F324F0 /* SecondViewController.swift */; };
 		B9ABA2D4241B721300F324F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9ABA2D2241B721300F324F0 /* Main.storyboard */; };
 		B9ABA2D6241B721400F324F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9ABA2D5241B721400F324F0 /* Assets.xcassets */; };
 		B9ABA2D9241B721400F324F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9ABA2D7241B721400F324F0 /* LaunchScreen.storyboard */; };
+		B9C220662427CF9500EF7C58 /* ImageCollectionViewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C220652427CF9500EF7C58 /* ImageCollectionViewProvider.swift */; };
+		B9C2206F2427D22F00EF7C58 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C2206D2427D22F00EF7C58 /* ImageCollectionViewCell.swift */; };
+		B9C220702427D22F00EF7C58 /* ImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9C2206E2427D22F00EF7C58 /* ImageCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		B9ABA2C7241B721300F324F0 /* PProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9ABA2CA241B721300F324F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B9ABA2CC241B721300F324F0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B9ABA2CE241B721300F324F0 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		B9ABA2CE241B721300F324F0 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		B9ABA2D0241B721300F324F0 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		B9ABA2D3241B721300F324F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B9ABA2D5241B721400F324F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B9ABA2D8241B721400F324F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B9ABA2DA241B721400F324F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B9C220652427CF9500EF7C58 /* ImageCollectionViewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewProvider.swift; sourceTree = "<group>"; };
+		B9C2206D2427D22F00EF7C58 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		B9C2206E2427D22F00EF7C58 /* ImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,8 +66,11 @@
 			children = (
 				B9ABA2CA241B721300F324F0 /* AppDelegate.swift */,
 				B9ABA2CC241B721300F324F0 /* SceneDelegate.swift */,
-				B9ABA2CE241B721300F324F0 /* FirstViewController.swift */,
+				B9ABA2CE241B721300F324F0 /* CameraViewController.swift */,
 				B9ABA2D0241B721300F324F0 /* SecondViewController.swift */,
+				B9C220652427CF9500EF7C58 /* ImageCollectionViewProvider.swift */,
+				B9C2206D2427D22F00EF7C58 /* ImageCollectionViewCell.swift */,
+				B9C2206E2427D22F00EF7C58 /* ImageCollectionViewCell.xib */,
 				B9ABA2D2241B721300F324F0 /* Main.storyboard */,
 				B9ABA2D5241B721400F324F0 /* Assets.xcassets */,
 				B9ABA2D7241B721400F324F0 /* LaunchScreen.storyboard */,
@@ -130,6 +139,7 @@
 			files = (
 				B9ABA2D9241B721400F324F0 /* LaunchScreen.storyboard in Resources */,
 				B9ABA2D6241B721400F324F0 /* Assets.xcassets in Resources */,
+				B9C220702427D22F00EF7C58 /* ImageCollectionViewCell.xib in Resources */,
 				B9ABA2D4241B721300F324F0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -141,8 +151,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9C2206F2427D22F00EF7C58 /* ImageCollectionViewCell.swift in Sources */,
 				B9ABA2D1241B721300F324F0 /* SecondViewController.swift in Sources */,
-				B9ABA2CF241B721300F324F0 /* FirstViewController.swift in Sources */,
+				B9C220662427CF9500EF7C58 /* ImageCollectionViewProvider.swift in Sources */,
+				B9ABA2CF241B721300F324F0 /* CameraViewController.swift in Sources */,
 				B9ABA2CB241B721300F324F0 /* AppDelegate.swift in Sources */,
 				B9ABA2CD241B721300F324F0 /* SceneDelegate.swift in Sources */,
 			);
@@ -291,6 +303,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = U8GHKMUY53;
 				INFOPLIST_FILE = PProject/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -309,6 +322,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = U8GHKMUY53;
 				INFOPLIST_FILE = PProject/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
