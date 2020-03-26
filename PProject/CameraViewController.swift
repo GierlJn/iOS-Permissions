@@ -13,19 +13,33 @@ protocol BackCameraDelegate: class{
     func finishBackSession()
 }
 
+enum CaptureState{
+    case frontCameraActive
+    case backCameraActive
+    case inactive
+}
+
+
+
 class CameraViewController: UIViewController,  UIImagePickerControllerDelegate, UINavigationControllerDelegate, FrontCameraDelegate, BackCameraDelegate{
 
+    
+    
+    @IBOutlet weak var permissionLabel: UIButton!
+    @IBOutlet weak var statusLabel: UILabel!
     
     let imagePicker = UIImagePickerController()
     var frontCamerasession: AVCaptureSession?
     var backCameraSession: AVCaptureSession?
-    var sessionActive = false
-    var captureViewLayer: AVCaptureVideoPreviewLayer!
     var imagesTaken = [UIImage]()
     var frontCameraSampleBufferDelegate = FrontCameraSampleBufferDelegate()
     var backCameraSampleBufferDelegate = BackCameraSampleBufferDelegate()
-    //@IBOutlet weak var preview: UIView!
     
+    var captureState = CaptureState.inactive{
+        didSet {
+            updateStatusLabel()
+        }
+    }
     @IBOutlet weak var backCameraCollectionView: UICollectionView!
     @IBOutlet weak var frontCameraCollectionView: UICollectionView!
     
@@ -34,15 +48,44 @@ class CameraViewController: UIViewController,  UIImagePickerControllerDelegate, 
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateStatusLabel()
         setupCollectionView()
         checkPermission()
         frontCameraSampleBufferDelegate.frontDelegate = self
         backCameraSampleBufferDelegate.backDelegate = self
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        //captureViewLayer?.frame = preview.frame
+    func updateStatusLabel(){
+        DispatchQueue.main.async {
+            self.statusLabel.text = self.getStatus()
+        }
+    }
+    
+    func updatePermissionLabel(){
+        DispatchQueue.main.async {
+            let authStatus = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
+            if authStatus == .authorized {
+                self.permissionLabel.titleLabel!.text = "Permission was granted"
+                self.permissionLabel.isUserInteractionEnabled = false
+            }else{
+                self.permissionLabel.titleLabel!.text = "Grant Permission"
+                self.permissionLabel.isUserInteractionEnabled = true
+            }
+        }
+    }
+    
+    func getStatus()->String{
+        var labelString = "Status: "
+        switch(self.captureState){
+        case .frontCameraActive:
+            labelString.append(contentsOf: "Front camera active")
+        case .backCameraActive:
+            labelString.append(contentsOf: "Back camera active")
+        case .inactive:
+            labelString.append(contentsOf: "No camera active")
+        }
+        return labelString
+        
     }
     
     func frontPictureTaken(image: CIImage) {
@@ -64,9 +107,9 @@ class CameraViewController: UIViewController,  UIImagePickerControllerDelegate, 
     }
     
     func checkPermission() {
+        self.updatePermissionLabel()
         let authStatus = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
         if authStatus == .authorized {
-            self.sessionActive = true
             setupBackCameraSession()
         }else{
             print("not authorized")
@@ -74,17 +117,14 @@ class CameraViewController: UIViewController,  UIImagePickerControllerDelegate, 
     }
     
     func finishFrontSession() {
-        if(self.sessionActive){
-            self.frontCamerasession = nil
-            self.sessionActive = false
-        }
+        self.captureState = .inactive
+        self.frontCamerasession = nil
     }
     
     func finishBackSession() {
-        if(self.sessionActive){
-            self.backCameraSession = nil
-            setupSessionFrontCamera()
-        }
+        self.captureState = .inactive
+        self.backCameraSession = nil
+        setupSessionFrontCamera()
     }
     
     
@@ -107,15 +147,11 @@ class CameraViewController: UIViewController,  UIImagePickerControllerDelegate, 
         }
     }
     
-    @IBAction func togglePreviewButtonTapped(_ sender: Any) {
-        //captureViewLayer.isHidden.toggle()
-    }
-    
     func setupSessionFrontCamera() {
         frontCamerasession = AVCaptureSession()
         guard let frontCamerasession = frontCamerasession else { return }
         guard let frontCamera = AVCaptureDevice.default(AVCaptureDevice.DeviceType.builtInWideAngleCamera, for: AVMediaType.video, position: .front) else { return }
-        
+        self.captureState = .frontCameraActive
         do {
             let input = try AVCaptureDeviceInput(device: frontCamera)
             frontCamerasession.beginConfiguration()
@@ -135,7 +171,7 @@ class CameraViewController: UIViewController,  UIImagePickerControllerDelegate, 
         backCameraSession = AVCaptureSession()
         guard let backCameraSession = backCameraSession else { return }
         guard let frontCamera = AVCaptureDevice.default(AVCaptureDevice.DeviceType.builtInWideAngleCamera, for: AVMediaType.video, position: .back) else { return }
-        
+        self.captureState = .backCameraActive
         do {
             let input = try AVCaptureDeviceInput(device: frontCamera)
             backCameraSession.beginConfiguration()
@@ -166,7 +202,6 @@ class FrontCameraSampleBufferDelegate: NSObject,AVCaptureVideoDataOutputSampleBu
         if self.skipCounter % 30 == 0 {
             if(takenPictures >= 10){
                 frontDelegate?.finishFrontSession()
-                
             }
             else{
                 frontDelegate?.frontPictureTaken(image: ciImage)
