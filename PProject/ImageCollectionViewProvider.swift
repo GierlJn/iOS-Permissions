@@ -21,6 +21,23 @@ class ImageCollectionViewProvider: NSObject, UICollectionViewDelegate, UICollect
     }
 }
 
+class BackImageCollectionViewProvider: NSObject, UICollectionViewDelegate, UICollectionViewDataSource{
+    
+    var images = [UIImage]()
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return images.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "backSecretImageCell", for: indexPath) as! BackImageCollectionViewCell
+        let image = images[indexPath.row]
+        cell.imageView.image = image
+        cell.imageView.contentMode = .scaleToFill
+        return cell
+    }
+}
+
 extension UICollectionView {
     func scrollNext() {
         

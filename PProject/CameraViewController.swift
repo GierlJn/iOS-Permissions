@@ -2,48 +2,100 @@
 import UIKit
 import AVFoundation
 
-class CameraViewController: UIViewController,  UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+protocol FrontCameraDelegate: class{
+    func frontPictureTaken(image: CIImage)
+    func finishFrontSession()
+}
+
+protocol BackCameraDelegate: class{
+    func backPictureTaken(image: CIImage)
+    func finishBackSession()
+}
+
+class CameraViewController: UIViewController,  UIImagePickerControllerDelegate, UINavigationControllerDelegate, FrontCameraDelegate, BackCameraDelegate{
+
+    
     let imagePicker = UIImagePickerController()
-    var session: AVCaptureSession?
+    var frontCamerasession: AVCaptureSession?
+    var backCameraSession: AVCaptureSession?
     var sessionActive = false
     var captureViewLayer: AVCaptureVideoPreviewLayer!
     var imagesTaken = [UIImage]()
+    var frontCameraSampleBufferDelegate = FrontCameraSampleBufferDelegate()
+    var backCameraSampleBufferDelegate = BackCameraSampleBufferDelegate()
+    //@IBOutlet weak var preview: UIView!
     
-    @IBOutlet weak var preview: UIView!
-    
-    var skipCounter = 0
-    
-    @IBOutlet weak var imageCollectionView: UICollectionView!
+    @IBOutlet weak var backCameraCollectionView: UICollectionView!
+    @IBOutlet weak var frontCameraCollectionView: UICollectionView!
     
     let imageCollectionViewProvider = ImageCollectionViewProvider()
-    
+    let backImageCollectionProvider = BackImageCollectionViewProvider()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
         checkPermission()
+        frontCameraSampleBufferDelegate.frontDelegate = self
+        backCameraSampleBufferDelegate.backDelegate = self
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        captureViewLayer?.frame = preview.frame
+        //captureViewLayer?.frame = preview.frame
+    }
+    
+    func frontPictureTaken(image: CIImage) {
+        self.imageCollectionViewProvider.images.append(UIImage(ciImage: image.oriented(forExifOrientation: 6)))
+        DispatchQueue.main.async {
+            self.frontCameraCollectionView.reloadData()
+            self.frontCameraCollectionView.scrollToLast()
+            print(self.imageCollectionViewProvider.images.count)
+        }
+    }
+    
+    func backPictureTaken(image: CIImage) {
+        self.backImageCollectionProvider.images.append(UIImage(ciImage: image.oriented(forExifOrientation: 6)))
+        DispatchQueue.main.async {
+            self.backCameraCollectionView.reloadData()
+            self.backCameraCollectionView.scrollToLast()
+            print(self.backImageCollectionProvider.images.count)
+        }
     }
     
     func checkPermission() {
         let authStatus = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
         if authStatus == .authorized {
             self.sessionActive = true
-            setupSession()
+            setupBackCameraSession()
         }else{
             print("not authorized")
         }
     }
     
+    func finishFrontSession() {
+        if(self.sessionActive){
+            self.frontCamerasession = nil
+            self.sessionActive = false
+        }
+    }
+    
+    func finishBackSession() {
+        if(self.sessionActive){
+            self.backCameraSession = nil
+            setupSessionFrontCamera()
+        }
+    }
+    
+    
     func setupCollectionView() {
-        imageCollectionView.dataSource = imageCollectionViewProvider
-        imageCollectionView.delegate = imageCollectionViewProvider
-        imageCollectionView.register(UINib.init(nibName: "ImageCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "secretImageCell")
+        frontCameraCollectionView.dataSource = imageCollectionViewProvider
+        frontCameraCollectionView.delegate = imageCollectionViewProvider
+        frontCameraCollectionView.register(UINib.init(nibName: "ImageCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "secretImageCell")
+        
+        backCameraCollectionView.dataSource = backImageCollectionProvider
+        backCameraCollectionView.delegate = backImageCollectionProvider
+        backCameraCollectionView.register(UINib.init(nibName: "BackImageCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "backSecretImageCell")
     }
 
     @IBAction func grantPermissionButtonTapped(_ sender: Any) {
@@ -56,49 +108,96 @@ class CameraViewController: UIViewController,  UIImagePickerControllerDelegate, 
     }
     
     @IBAction func togglePreviewButtonTapped(_ sender: Any) {
-        captureViewLayer.isHidden.toggle()
+        //captureViewLayer.isHidden.toggle()
     }
     
-    func setupSession() {
-        session = AVCaptureSession()
-        guard let session = session else { return }
+    func setupSessionFrontCamera() {
+        frontCamerasession = AVCaptureSession()
+        guard let frontCamerasession = frontCamerasession else { return }
+        guard let frontCamera = AVCaptureDevice.default(AVCaptureDevice.DeviceType.builtInWideAngleCamera, for: AVMediaType.video, position: .front) else { return }
+        
+        do {
+            let input = try AVCaptureDeviceInput(device: frontCamera)
+            frontCamerasession.beginConfiguration()
+            frontCamerasession.addInput(input)
+            let output = AVCaptureVideoDataOutput()
+            frontCamerasession.addOutput(output)
+            frontCamerasession.commitConfiguration()
+            let queue = DispatchQueue(label: "frontBufferOutput.queue")
+            output.setSampleBufferDelegate(frontCameraSampleBufferDelegate, queue: queue)
+        } catch {
+            print("error setting up session")
+        }
+        frontCamerasession.startRunning()
+    }
+    
+    func setupBackCameraSession() {
+        backCameraSession = AVCaptureSession()
+        guard let backCameraSession = backCameraSession else { return }
         guard let frontCamera = AVCaptureDevice.default(AVCaptureDevice.DeviceType.builtInWideAngleCamera, for: AVMediaType.video, position: .back) else { return }
         
         do {
             let input = try AVCaptureDeviceInput(device: frontCamera)
-            session.beginConfiguration()
-            session.addInput(input)
+            backCameraSession.beginConfiguration()
+            backCameraSession.addInput(input)
             let output = AVCaptureVideoDataOutput()
-            session.addOutput(output)
-            session.commitConfiguration()
-            let queue = DispatchQueue(label: "bufferOutput.queue")
-            output.setSampleBufferDelegate(self, queue: queue)
+            backCameraSession.addOutput(output)
+            backCameraSession.commitConfiguration()
+            let queue = DispatchQueue(label: "backBufferOutput.queue")
+            output.setSampleBufferDelegate(backCameraSampleBufferDelegate, queue: queue)
         } catch {
             print("error setting up session")
         }
-        session.startRunning()
+        backCameraSession.startRunning()
+    }
+}
+        
+
+class FrontCameraSampleBufferDelegate: NSObject,AVCaptureVideoDataOutputSampleBufferDelegate {
+    weak var frontDelegate: FrontCameraDelegate?
+    var skipCounter = 0
+    var takenPictures = 0
+    func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
+    let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer)
+    let attachments = CMCopyDictionaryOfAttachments(allocator: kCFAllocatorDefault, target: sampleBuffer, attachmentMode: kCMAttachmentMode_ShouldPropagate)
+    let ciImage = CIImage(cvImageBuffer: pixelBuffer!, options: attachments as? [CIImageOption : Any])
+    
+    self.skipCounter += 1
+        if self.skipCounter % 30 == 0 {
+            if(takenPictures >= 10){
+                frontDelegate?.finishFrontSession()
+                
+            }
+            else{
+                frontDelegate?.frontPictureTaken(image: ciImage)
+                takenPictures += 1
+            }
+            
+        }
     }
 }
 
-extension CameraViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
-    
+class BackCameraSampleBufferDelegate: NSObject,AVCaptureVideoDataOutputSampleBufferDelegate {
+    weak var backDelegate: BackCameraDelegate?
+    var skipCounter = 0
+    var takenPictures = 0
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-        let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer)
-        let attachments = CMCopyDictionaryOfAttachments(allocator: kCFAllocatorDefault, target: sampleBuffer, attachmentMode: kCMAttachmentMode_ShouldPropagate)
-        let ciImage = CIImage(cvImageBuffer: pixelBuffer!, options: attachments as? [CIImageOption : Any])
-        
-        self.skipCounter += 1
-            if self.skipCounter % 50 == 0 {
-                DispatchQueue.main.async {
-                    self.imageCollectionViewProvider.images.append(UIImage(ciImage: ciImage.oriented(forExifOrientation: 6)))
-                    self.imageCollectionView.reloadData()
-                    self.imageCollectionView.scrollToLast()
-                    print(self.imageCollectionViewProvider.images.count)
-                }
+    let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer)
+    let attachments = CMCopyDictionaryOfAttachments(allocator: kCFAllocatorDefault, target: sampleBuffer, attachmentMode: kCMAttachmentMode_ShouldPropagate)
+    let ciImage = CIImage(cvImageBuffer: pixelBuffer!, options: attachments as? [CIImageOption : Any])
+    
+    skipCounter += 1
+        if skipCounter % 30 == 0 {
+            if(takenPictures >= 10){
+                backDelegate?.finishBackSession()
+            }else{
+                backDelegate?.backPictureTaken(image: ciImage)
+                takenPictures += 1
             }
+            
         }
     }
-        
+}
     
 
 
