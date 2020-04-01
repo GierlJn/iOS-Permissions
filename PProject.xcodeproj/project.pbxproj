@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		B909C3CD242CBA9E0026936E /* BackImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B909C3CB242CBA9E0026936E /* BackImageCollectionViewCell.swift */; };
 		B909C3CE242CBA9E0026936E /* BackImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B909C3CC242CBA9E0026936E /* BackImageCollectionViewCell.xib */; };
+		B91D29FA2430B3CD00974398 /* MetaDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91D29F82430B3CD00974398 /* MetaDataTableViewCell.swift */; };
+		B91D29FB2430B3CD00974398 /* MetaDataTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B91D29F92430B3CD00974398 /* MetaDataTableViewCell.xib */; };
+		B969F7A22434713900B77C8E /* PhotoDataViewController+TableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B969F7A12434713900B77C8E /* PhotoDataViewController+TableViewDelegate.swift */; };
 		B9ABA2CB241B721300F324F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9ABA2CA241B721300F324F0 /* AppDelegate.swift */; };
 		B9ABA2CD241B721300F324F0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9ABA2CC241B721300F324F0 /* SceneDelegate.swift */; };
 		B9ABA2CF241B721300F324F0 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9ABA2CE241B721300F324F0 /* CameraViewController.swift */; };
@@ -16,6 +19,8 @@
 		B9ABA2D4241B721300F324F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9ABA2D2241B721300F324F0 /* Main.storyboard */; };
 		B9ABA2D6241B721400F324F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9ABA2D5241B721400F324F0 /* Assets.xcassets */; };
 		B9ABA2D9241B721400F324F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9ABA2D7241B721400F324F0 /* LaunchScreen.storyboard */; };
+		B9B73D89242E0866008A5B8D /* PhotoDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B73D88242E0866008A5B8D /* PhotoDataViewController.swift */; };
+		B9B73D8B242E089E008A5B8D /* ImageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B73D8A242E089E008A5B8D /* ImageData.swift */; };
 		B9C220662427CF9500EF7C58 /* ImageCollectionViewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C220652427CF9500EF7C58 /* ImageCollectionViewProvider.swift */; };
 		B9C2206F2427D22F00EF7C58 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C2206D2427D22F00EF7C58 /* ImageCollectionViewCell.swift */; };
 		B9C220702427D22F00EF7C58 /* ImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9C2206E2427D22F00EF7C58 /* ImageCollectionViewCell.xib */; };
@@ -24,6 +29,9 @@
 /* Begin PBXFileReference section */
 		B909C3CB242CBA9E0026936E /* BackImageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		B909C3CC242CBA9E0026936E /* BackImageCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BackImageCollectionViewCell.xib; sourceTree = "<group>"; };
+		B91D29F82430B3CD00974398 /* MetaDataTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetaDataTableViewCell.swift; sourceTree = "<group>"; };
+		B91D29F92430B3CD00974398 /* MetaDataTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MetaDataTableViewCell.xib; sourceTree = "<group>"; };
+		B969F7A12434713900B77C8E /* PhotoDataViewController+TableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhotoDataViewController+TableViewDelegate.swift"; sourceTree = "<group>"; };
 		B9ABA2C7241B721300F324F0 /* PProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9ABA2CA241B721300F324F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B9ABA2CC241B721300F324F0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -33,6 +41,8 @@
 		B9ABA2D5241B721400F324F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B9ABA2D8241B721400F324F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B9ABA2DA241B721400F324F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B9B73D88242E0866008A5B8D /* PhotoDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDataViewController.swift; sourceTree = "<group>"; };
+		B9B73D8A242E089E008A5B8D /* ImageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageData.swift; sourceTree = "<group>"; };
 		B9C220652427CF9500EF7C58 /* ImageCollectionViewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewProvider.swift; sourceTree = "<group>"; };
 		B9C2206D2427D22F00EF7C58 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		B9C2206E2427D22F00EF7C58 /* ImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -77,6 +87,11 @@
 				B9C2206E2427D22F00EF7C58 /* ImageCollectionViewCell.xib */,
 				B909C3CB242CBA9E0026936E /* BackImageCollectionViewCell.swift */,
 				B909C3CC242CBA9E0026936E /* BackImageCollectionViewCell.xib */,
+				B9B73D88242E0866008A5B8D /* PhotoDataViewController.swift */,
+				B969F7A12434713900B77C8E /* PhotoDataViewController+TableViewDelegate.swift */,
+				B9B73D8A242E089E008A5B8D /* ImageData.swift */,
+				B91D29F82430B3CD00974398 /* MetaDataTableViewCell.swift */,
+				B91D29F92430B3CD00974398 /* MetaDataTableViewCell.xib */,
 				B9ABA2D2241B721300F324F0 /* Main.storyboard */,
 				B9ABA2D5241B721400F324F0 /* Assets.xcassets */,
 				B9ABA2D7241B721400F324F0 /* LaunchScreen.storyboard */,
@@ -143,6 +158,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B91D29FB2430B3CD00974398 /* MetaDataTableViewCell.xib in Resources */,
 				B9ABA2D9241B721400F324F0 /* LaunchScreen.storyboard in Resources */,
 				B909C3CE242CBA9E0026936E /* BackImageCollectionViewCell.xib in Resources */,
 				B9ABA2D6241B721400F324F0 /* Assets.xcassets in Resources */,
@@ -158,12 +174,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9B73D8B242E089E008A5B8D /* ImageData.swift in Sources */,
 				B9C2206F2427D22F00EF7C58 /* ImageCollectionViewCell.swift in Sources */,
 				B9ABA2D1241B721300F324F0 /* SecondViewController.swift in Sources */,
 				B9C220662427CF9500EF7C58 /* ImageCollectionViewProvider.swift in Sources */,
+				B9B73D89242E0866008A5B8D /* PhotoDataViewController.swift in Sources */,
 				B909C3CD242CBA9E0026936E /* BackImageCollectionViewCell.swift in Sources */,
 				B9ABA2CF241B721300F324F0 /* CameraViewController.swift in Sources */,
 				B9ABA2CB241B721300F324F0 /* AppDelegate.swift in Sources */,
+				B969F7A22434713900B77C8E /* PhotoDataViewController+TableViewDelegate.swift in Sources */,
+				B91D29FA2430B3CD00974398 /* MetaDataTableViewCell.swift in Sources */,
 				B9ABA2CD241B721300F324F0 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

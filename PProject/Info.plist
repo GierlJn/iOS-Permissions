@@ -22,6 +22,8 @@
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>Berechtigung für Kamera</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Berechtigung für Fotos</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

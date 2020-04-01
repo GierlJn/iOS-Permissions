@@ -93,7 +93,7 @@ class CameraViewController: UIViewController,  UIImagePickerControllerDelegate, 
         DispatchQueue.main.async {
             self.frontCameraCollectionView.reloadData()
             self.frontCameraCollectionView.scrollToLast()
-            print(self.imageCollectionViewProvider.images.count)
+            //print(self.imageCollectionViewProvider.images.count)
         }
     }
     
@@ -102,7 +102,7 @@ class CameraViewController: UIViewController,  UIImagePickerControllerDelegate, 
         DispatchQueue.main.async {
             self.backCameraCollectionView.reloadData()
             self.backCameraCollectionView.scrollToLast()
-            print(self.backImageCollectionProvider.images.count)
+            //print(self.backImageCollectionProvider.images.count)
         }
     }
     
@@ -110,7 +110,7 @@ class CameraViewController: UIViewController,  UIImagePickerControllerDelegate, 
         self.updatePermissionLabel()
         let authStatus = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
         if authStatus == .authorized {
-            setupBackCameraSession()
+            //setupBackCameraSession()
         }else{
             print("not authorized")
         }

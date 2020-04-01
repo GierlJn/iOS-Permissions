@@ -49,7 +49,7 @@
                             </navigationBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="LFB-HJ-eK2">
                                 <rect key="frame" x="0.0" y="60" width="320" height="150"/>
-                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="Jb6-A5-Gtv"/>
                                 </constraints>
@@ -63,7 +63,7 @@
                             </collectionView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="YnE-b3-sQT">
                                 <rect key="frame" x="0.0" y="226" width="320" height="150"/>
-                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="I6x-KK-sfU"/>
                                 </constraints>
@@ -110,7 +110,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1743.75" y="-388.73239436619718"/>
+            <point key="canvasLocation" x="2385" y="-120"/>
         </scene>
         <!--Second-->
         <scene sceneID="wg7-f3-ORb">
@@ -145,7 +145,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="360"/>
+            <point key="canvasLocation" x="2333" y="1535"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -159,11 +159,73 @@
                     <connections>
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
+                        <segue destination="cn3-Ws-60e" kind="relationship" relationship="viewControllers" id="4Xu-LV-zhA"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="0.0" y="0.0"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="R3j-wW-qjP">
+            <objects>
+                <viewController id="cn3-Ws-60e" customClass="PhotoDataViewController" customModule="PProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NSz-sf-1Ej">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9zr-e0-NX4">
+                                <rect key="frame" x="0.0" y="208" width="320" height="260"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="260" id="Ad8-dD-KFV"/>
+                                </constraints>
+                            </tableView>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vn1-cU-Ybq">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="mO2-v1-Tsz"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="cn3-Ws-60e" id="TLr-4i-eir"/>
+                                </connections>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="q2q-EV-BCk">
+                                <rect key="frame" x="16" y="474" width="296" height="39"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="Grant Permission                                                ">
+                                    <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="permissionButtonWasPressed:" destination="cn3-Ws-60e" eventType="touchUpInside" id="TNN-kW-duO"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="9zr-e0-NX4" firstAttribute="trailing" secondItem="HN2-IM-iJW" secondAttribute="trailing" id="ACS-zp-ehl"/>
+                            <constraint firstItem="HN2-IM-iJW" firstAttribute="trailing" secondItem="q2q-EV-BCk" secondAttribute="trailing" constant="8" id="JIC-RA-FGk"/>
+                            <constraint firstItem="q2q-EV-BCk" firstAttribute="leading" secondItem="HN2-IM-iJW" secondAttribute="leading" constant="16" id="UZo-AJ-aGJ"/>
+                            <constraint firstItem="vn1-cU-Ybq" firstAttribute="leading" secondItem="HN2-IM-iJW" secondAttribute="leading" id="VW7-Jc-tjl"/>
+                            <constraint firstItem="9zr-e0-NX4" firstAttribute="top" secondItem="vn1-cU-Ybq" secondAttribute="bottom" constant="8" id="Yb6-dn-z0B"/>
+                            <constraint firstItem="HN2-IM-iJW" firstAttribute="bottom" secondItem="q2q-EV-BCk" secondAttribute="bottom" constant="6" id="ZaD-d8-6sk"/>
+                            <constraint firstItem="q2q-EV-BCk" firstAttribute="top" secondItem="9zr-e0-NX4" secondAttribute="bottom" constant="6" id="bNS-Bc-yuI"/>
+                            <constraint firstItem="9zr-e0-NX4" firstAttribute="leading" secondItem="HN2-IM-iJW" secondAttribute="leading" id="gmd-aL-oji"/>
+                            <constraint firstItem="vn1-cU-Ybq" firstAttribute="top" secondItem="HN2-IM-iJW" secondAttribute="top" id="nGL-ww-Ezt"/>
+                            <constraint firstItem="vn1-cU-Ybq" firstAttribute="trailing" secondItem="HN2-IM-iJW" secondAttribute="trailing" id="qbe-rD-qEr"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="HN2-IM-iJW"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="qMn-IA-P43"/>
+                    <connections>
+                        <outlet property="mapView" destination="vn1-cU-Ybq" id="HRX-3O-QgU"/>
+                        <outlet property="permissionButton" destination="q2q-EV-BCk" id="VR1-pQ-5l0"/>
+                        <outlet property="tableView" destination="9zr-e0-NX4" id="EOe-pH-0xm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="25l-Wz-mdu" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2300.625" y="710.91549295774644"/>
         </scene>
     </scenes>
     <resources>
