@@ -22,18 +22,20 @@ enum CaptureState{
 
 
 class CameraViewController: UIViewController,  UIImagePickerControllerDelegate, UINavigationControllerDelegate, FrontCameraDelegate, BackCameraDelegate{
-
     
     
-    @IBOutlet weak var permissionLabel: UIButton!
+    
+    //@IBOutlet weak var permissionLabel: UIButton!
     @IBOutlet weak var statusLabel: UILabel!
     
     let imagePicker = UIImagePickerController()
     var frontCamerasession: AVCaptureSession?
     var backCameraSession: AVCaptureSession?
-    var imagesTaken = [UIImage]()
     var frontCameraSampleBufferDelegate = FrontCameraSampleBufferDelegate()
     var backCameraSampleBufferDelegate = BackCameraSampleBufferDelegate()
+    
+    var grantPermissionButton:UIButton?
+    var startButton:UIButton?
     
     var captureState = CaptureState.inactive{
         didSet {
@@ -45,14 +47,67 @@ class CameraViewController: UIViewController,  UIImagePickerControllerDelegate, 
     
     let imageCollectionViewProvider = ImageCollectionViewProvider()
     let backImageCollectionProvider = BackImageCollectionViewProvider()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         updateStatusLabel()
         setupCollectionView()
-        checkPermission()
         frontCameraSampleBufferDelegate.frontDelegate = self
         backCameraSampleBufferDelegate.backDelegate = self
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        let authStatus = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
+        if authStatus == .authorized {
+            showStartButton()
+        }else{
+            showPermissionButton()
+        }
+    }
+    
+    fileprivate func showStartButton() {
+        startButton = UIButton(type: .roundedRect)
+        startButton!.makeActionButton(title: "Kameraaufnahmen \n starten")
+        startButton!.addTarget(self, action: Selector(("startButtonPressed")), for: .touchUpInside)
+        self.view.addSubview(startButton!)
+        startButton!.translatesAutoresizingMaskIntoConstraints = false
+        let centerYAnchorConstraint = startButton!.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor)
+        let margins = view.layoutMarginsGuide
+        let centerXAnchorConstraint = startButton!.centerXAnchor.constraint(equalTo: margins.centerXAnchor)
+        centerYAnchorConstraint.isActive = true
+        centerXAnchorConstraint.isActive = true
+    }
+    
+    fileprivate func showPermissionButton() {
+        grantPermissionButton = UIButton(type: .roundedRect)
+        grantPermissionButton!.makeActionButton(title: "Grant \n permission")
+        grantPermissionButton!.addTarget(self, action: Selector(("grantPermissionButtonPressed")), for: .touchUpInside)
+        self.view.addSubview(grantPermissionButton!)
+        grantPermissionButton!.translatesAutoresizingMaskIntoConstraints = false
+        let centerYAnchorConstraint = grantPermissionButton!.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor)
+        let margins = view.layoutMarginsGuide
+        let centerXAnchorConstraint = grantPermissionButton!.centerXAnchor.constraint(equalTo: margins.centerXAnchor)
+        centerYAnchorConstraint.isActive = true
+        centerXAnchorConstraint.isActive = true
+    }
+    
+    @objc func grantPermissionButtonPressed(){
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            imagePicker.delegate = self
+            imagePicker.sourceType = UIImagePickerController.SourceType.camera
+            imagePicker.cameraCaptureMode = .photo
+            present(imagePicker,animated: true, completion: nil)
+        }
+        grantPermissionButton?.removeFromSuperview()
+        showStartButton()
+    }
+    
+    @objc func startButtonPressed(){
+        let authStatus = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
+        if authStatus == .authorized {
+            startButton?.removeFromSuperview()
+            setupBackCameraSession()
+        }
     }
     
     func updateStatusLabel(){
@@ -61,18 +116,7 @@ class CameraViewController: UIViewController,  UIImagePickerControllerDelegate, 
         }
     }
     
-    func updatePermissionLabel(){
-        DispatchQueue.main.async {
-            let authStatus = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
-            if authStatus == .authorized {
-                self.permissionLabel.titleLabel!.text = "Permission was granted"
-                self.permissionLabel.isUserInteractionEnabled = false
-            }else{
-                self.permissionLabel.titleLabel!.text = "Grant Permission"
-                self.permissionLabel.isUserInteractionEnabled = true
-            }
-        }
-    }
+    
     
     func getStatus()->String{
         var labelString = "Status: "
@@ -105,16 +149,7 @@ class CameraViewController: UIViewController,  UIImagePickerControllerDelegate, 
             //print(self.backImageCollectionProvider.images.count)
         }
     }
-    
-    func checkPermission() {
-        self.updatePermissionLabel()
-        let authStatus = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
-        if authStatus == .authorized {
-            //setupBackCameraSession()
-        }else{
-            print("not authorized")
-        }
-    }
+
     
     func finishFrontSession() {
         self.captureState = .inactive
@@ -137,7 +172,7 @@ class CameraViewController: UIViewController,  UIImagePickerControllerDelegate, 
         backCameraCollectionView.delegate = backImageCollectionProvider
         backCameraCollectionView.register(UINib.init(nibName: "BackImageCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "backSecretImageCell")
     }
-
+    
     @IBAction func grantPermissionButtonTapped(_ sender: Any) {
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             imagePicker.delegate = self
@@ -187,18 +222,18 @@ class CameraViewController: UIViewController,  UIImagePickerControllerDelegate, 
         backCameraSession.startRunning()
     }
 }
-        
+
 
 class FrontCameraSampleBufferDelegate: NSObject,AVCaptureVideoDataOutputSampleBufferDelegate {
     weak var frontDelegate: FrontCameraDelegate?
     var skipCounter = 0
     var takenPictures = 0
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-    let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer)
-    let attachments = CMCopyDictionaryOfAttachments(allocator: kCFAllocatorDefault, target: sampleBuffer, attachmentMode: kCMAttachmentMode_ShouldPropagate)
-    let ciImage = CIImage(cvImageBuffer: pixelBuffer!, options: attachments as? [CIImageOption : Any])
-    
-    self.skipCounter += 1
+        let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer)
+        let attachments = CMCopyDictionaryOfAttachments(allocator: kCFAllocatorDefault, target: sampleBuffer, attachmentMode: kCMAttachmentMode_ShouldPropagate)
+        let ciImage = CIImage(cvImageBuffer: pixelBuffer!, options: attachments as? [CIImageOption : Any])
+        
+        self.skipCounter += 1
         if self.skipCounter % 30 == 0 {
             if(takenPictures >= 10){
                 frontDelegate?.finishFrontSession()
@@ -217,11 +252,11 @@ class BackCameraSampleBufferDelegate: NSObject,AVCaptureVideoDataOutputSampleBuf
     var skipCounter = 0
     var takenPictures = 0
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-    let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer)
-    let attachments = CMCopyDictionaryOfAttachments(allocator: kCFAllocatorDefault, target: sampleBuffer, attachmentMode: kCMAttachmentMode_ShouldPropagate)
-    let ciImage = CIImage(cvImageBuffer: pixelBuffer!, options: attachments as? [CIImageOption : Any])
-    
-    skipCounter += 1
+        let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer)
+        let attachments = CMCopyDictionaryOfAttachments(allocator: kCFAllocatorDefault, target: sampleBuffer, attachmentMode: kCMAttachmentMode_ShouldPropagate)
+        let ciImage = CIImage(cvImageBuffer: pixelBuffer!, options: attachments as? [CIImageOption : Any])
+        
+        skipCounter += 1
         if skipCounter % 30 == 0 {
             if(takenPictures >= 10){
                 backDelegate?.finishBackSession()
@@ -233,6 +268,6 @@ class BackCameraSampleBufferDelegate: NSObject,AVCaptureVideoDataOutputSampleBuf
         }
     }
 }
-    
+
 
 
