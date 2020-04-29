@@ -27,24 +27,75 @@ class PhotoDataViewController: UIViewController{
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var permissionButton: UIButton!
     
     var selectedImage: ImageData?
     var images = [ImageData]()
     var mapAnnotations: [MapAnnotation]?
     
-    fileprivate var appState = AppState.permissionNotGiven{
-        didSet{
-            updateButtonLabel()
-        }
-    }
+    var grantPermissionButton:UIButton?
+    var startButton:UIButton?
+    var infoLabel:UILabel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        let auth = PHPhotoLibrary.authorizationStatus()
+        if auth == .authorized {
+            showStartButton()
+        }else{
+            showPermissionButton()
+        }
+    }
+    
+    fileprivate func showStartButton() {
+        startButton = UIButton(type: .roundedRect)
+        startButton!.makeActionButton(title: "Metadaten \n laden")
+        startButton!.addTarget(self, action: Selector(("startButtonPressed")), for: .touchUpInside)
+        self.view.addSubview(startButton!)
+        startButton!.translatesAutoresizingMaskIntoConstraints = false
+        let centerYAnchorConstraint = startButton!.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor)
+        let margins = view.layoutMarginsGuide
+        let centerXAnchorConstraint = startButton!.centerXAnchor.constraint(equalTo: margins.centerXAnchor)
+        centerYAnchorConstraint.isActive = true
+        centerXAnchorConstraint.isActive = true
+    }
+    
+    fileprivate func showInfoLabel(){
+        infoLabel = UILabel()
+        infoLabel!.lineBreakMode = .byWordWrapping
+        infoLabel!.text = String(format: "Daten aus %lu Bildern wurden geladen.", UInt(self.images.count))
+        infoLabel?.textAlignment = .center
+        self.view.addSubview(infoLabel!)
+        infoLabel!.translatesAutoresizingMaskIntoConstraints = false
+        let centerYAnchorConstraint = infoLabel!.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor)
+        let margins = view.layoutMarginsGuide
+        let centerXAnchorConstraint = infoLabel!.centerXAnchor.constraint(equalTo: margins.centerXAnchor)
+        centerYAnchorConstraint.isActive = true
+        centerXAnchorConstraint.isActive = true
+        
+    }
+    
+    fileprivate func showPermissionButton() {
+        grantPermissionButton = UIButton(type: .roundedRect)
+        grantPermissionButton!.makeActionButton(title: "Grant \n permission")
+        grantPermissionButton!.addTarget(self, action: Selector(("grantPermissionButtonPressed")), for: .touchUpInside)
+        self.view.addSubview(grantPermissionButton!)
+        grantPermissionButton!.translatesAutoresizingMaskIntoConstraints = false
+        let centerYAnchorConstraint = grantPermissionButton!.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor)
+        let margins = view.layoutMarginsGuide
+        let centerXAnchorConstraint = grantPermissionButton!.centerXAnchor.constraint(equalTo: margins.centerXAnchor)
+        centerYAnchorConstraint.isActive = true
+        centerXAnchorConstraint.isActive = true
+    }
+    
+    @objc func grantPermissionButtonPressed(){
         PHPhotoLibrary.requestAuthorization({ auth in
             if auth == .authorized {
-                self.appState = AppState.permissionGiven
+                self.grantPermissionButton?.removeFromSuperview()
+                self.showStartButton()
             } else if auth == .denied {
                 let alert = UIAlertController(title: "", message: "Berechtigung wird benötigt um Daten aus den Fotos zu laden.", preferredStyle: .alert)
                 let okayButton = UIAlertAction(title: "Ok", style: .default, handler: { action in
@@ -56,24 +107,22 @@ class PhotoDataViewController: UIViewController{
         })
     }
     
+    @objc func startButtonPressed(){
+        let auth = PHPhotoLibrary.authorizationStatus()
+        if auth == .authorized {
+            startButton?.isHidden = true
+            self.fetchPhotos()
+            self.setupAnnotations()
+        }
+    }
+    
+    
     private func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib.init(nibName: "MetaDataTableViewCell", bundle: nil), forCellReuseIdentifier: "MetaDataCell")
     }
     
-    private func updateButtonLabel(){
-        DispatchQueue.main.async {
-            switch(self.appState){
-            case .dataIsLoaded:
-                self.permissionButton.titleLabel?.text = String(format: "Daten aus %lu Bildern wurden geladen", UInt(self.images.count))
-            case .permissionNotGiven:
-                self.permissionButton.titleLabel?.text = "Berechtigung für Fotos erteilen"
-            case .permissionGiven:
-                self.permissionButton.titleLabel?.text = "Daten aus Fotos laden"
-            }
-        }
-    }
     
     private func fetchPhotos() {
         let options = PHFetchOptions()
@@ -99,16 +148,10 @@ class PhotoDataViewController: UIViewController{
                 self.mapAnnotations!.append(annotation)
             }
             self.mapView?.addAnnotations(self.mapAnnotations!)
-            self.appState = AppState.dataIsLoaded
+            self.showInfoLabel()
         }
     }
     
-    @IBAction func permissionButtonWasPressed(_ sender: Any) {
-        if(appState == .permissionGiven){
-            self.fetchPhotos()
-            self.setupAnnotations()
-        }
-    }
 }
 
 extension PhotoDataViewController: MKMapViewDelegate{
@@ -118,6 +161,7 @@ extension PhotoDataViewController: MKMapViewDelegate{
         selectedImage = image
         selectedImage?.loadDetails {
             self.tableView.isHidden = false
+            self.infoLabel?.isHidden = true
             self.tableView.reloadData()
         }
     }

@@ -37,6 +37,8 @@ class CameraViewController: UIViewController,  UIImagePickerControllerDelegate, 
     var grantPermissionButton:UIButton?
     var startButton:UIButton?
     
+    @IBOutlet weak var imagesTakenLabel: UILabel!
+    
     var captureState = CaptureState.inactive{
         didSet {
             updateStatusLabel()
@@ -137,7 +139,7 @@ class CameraViewController: UIViewController,  UIImagePickerControllerDelegate, 
         DispatchQueue.main.async {
             self.frontCameraCollectionView.reloadData()
             self.frontCameraCollectionView.scrollToLast()
-            //print(self.imageCollectionViewProvider.images.count)
+            self.updateLabel()
         }
     }
     
@@ -146,10 +148,13 @@ class CameraViewController: UIViewController,  UIImagePickerControllerDelegate, 
         DispatchQueue.main.async {
             self.backCameraCollectionView.reloadData()
             self.backCameraCollectionView.scrollToLast()
-            //print(self.backImageCollectionProvider.images.count)
+            self.updateLabel()
         }
     }
 
+    func updateLabel(){
+        self.imagesTakenLabel.text = "Aufnahmen: \(self.imageCollectionViewProvider.images.count + self.backImageCollectionProvider.images.count)"
+    }
     
     func finishFrontSession() {
         self.captureState = .inactive
@@ -241,6 +246,7 @@ class FrontCameraSampleBufferDelegate: NSObject,AVCaptureVideoDataOutputSampleBu
             else{
                 frontDelegate?.frontPictureTaken(image: ciImage)
                 takenPictures += 1
+                
             }
             
         }

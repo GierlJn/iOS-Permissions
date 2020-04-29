@@ -35,10 +35,10 @@
                                 </items>
                             </navigationBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="LFB-HJ-eK2">
-                                <rect key="frame" x="0.0" y="108" width="320" height="140"/>
+                                <rect key="frame" x="0.0" y="108" width="320" height="130"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="140" id="Jb6-A5-Gtv"/>
+                                    <constraint firstAttribute="height" constant="130" id="Jb6-A5-Gtv"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="3" id="gZk-Po-3bp">
                                     <size key="itemSize" width="90" height="90"/>
@@ -49,10 +49,10 @@
                                 <cells/>
                             </collectionView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="YnE-b3-sQT">
-                                <rect key="frame" x="0.0" y="264" width="320" height="140"/>
+                                <rect key="frame" x="0.0" y="254" width="320" height="130"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="140" id="I6x-KK-sfU"/>
+                                    <constraint firstAttribute="height" constant="130" id="I6x-KK-sfU"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="3" id="KKW-1A-vBk">
                                     <size key="itemSize" width="90" height="90"/>
@@ -62,20 +62,33 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aufnahmen: 0 " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q1d-JQ-mC1">
+                                <rect key="frame" x="16" y="439" width="288" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="thp-Tp-grs"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="PQr-Ze-W5v" firstAttribute="bottom" secondItem="ZKd-t0-zHN" secondAttribute="bottom" constant="16" id="0Dc-em-ZXx"/>
                             <constraint firstItem="bLc-tj-gkf" firstAttribute="trailing" secondItem="PQr-Ze-W5v" secondAttribute="trailing" id="5nC-fe-Tri"/>
                             <constraint firstItem="bLc-tj-gkf" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" id="62a-N6-pip"/>
+                            <constraint firstItem="q1d-JQ-mC1" firstAttribute="top" secondItem="YnE-b3-sQT" secondAttribute="bottom" constant="55" id="78l-LZ-2yP"/>
                             <constraint firstItem="LFB-HJ-eK2" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="8if-fw-N5d"/>
                             <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="ZKd-t0-zHN" secondAttribute="trailing" constant="16" id="JPS-U6-V2t"/>
+                            <constraint firstItem="q1d-JQ-mC1" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" constant="16" id="NXu-bI-Zvi"/>
+                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="q1d-JQ-mC1" secondAttribute="trailing" constant="16" id="TL4-17-S3i"/>
                             <constraint firstItem="YnE-b3-sQT" firstAttribute="top" secondItem="LFB-HJ-eK2" secondAttribute="bottom" constant="16" id="Wqh-oD-Fpv"/>
                             <constraint firstItem="YnE-b3-sQT" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="Wtj-gq-PeT"/>
                             <constraint firstItem="YnE-b3-sQT" firstAttribute="trailing" secondItem="PQr-Ze-W5v" secondAttribute="trailing" id="bVN-Ic-bLn"/>
                             <constraint firstItem="ZKd-t0-zHN" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="dss-hF-QPu"/>
                             <constraint firstItem="LFB-HJ-eK2" firstAttribute="top" secondItem="bLc-tj-gkf" secondAttribute="bottom" constant="64" id="e6g-eW-tyM"/>
                             <constraint firstItem="bLc-tj-gkf" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="lA0-ki-UUL"/>
+                            <constraint firstItem="ZKd-t0-zHN" firstAttribute="top" secondItem="q1d-JQ-mC1" secondAttribute="bottom" constant="8" id="q1T-a1-dgb"/>
                             <constraint firstItem="ZKd-t0-zHN" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" constant="16" id="tWv-6W-NoX"/>
                             <constraint firstItem="LFB-HJ-eK2" firstAttribute="trailing" secondItem="PQr-Ze-W5v" secondAttribute="trailing" id="w3f-Mm-j5c"/>
                             <constraint firstItem="YnE-b3-sQT" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="xzk-2c-Hjw"/>
@@ -86,6 +99,7 @@
                     <connections>
                         <outlet property="backCameraCollectionView" destination="LFB-HJ-eK2" id="HOR-0E-1Ni"/>
                         <outlet property="frontCameraCollectionView" destination="YnE-b3-sQT" id="stZ-Ph-DCv"/>
+                        <outlet property="imagesTakenLabel" destination="q1d-JQ-mC1" id="2N0-AC-Nhm"/>
                         <outlet property="statusLabel" destination="ZKd-t0-zHN" id="n7o-dX-uBn"/>
                     </connections>
                 </viewController>
@@ -287,11 +301,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9zr-e0-NX4">
-                                <rect key="frame" x="0.0" y="208" width="320" height="260"/>
+                                <rect key="frame" x="0.0" y="208" width="320" height="303"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="260" id="Ad8-dD-KFV"/>
-                                </constraints>
                             </tableView>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vn1-cU-Ybq">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
@@ -302,26 +313,13 @@
                                     <outlet property="delegate" destination="cn3-Ws-60e" id="TLr-4i-eir"/>
                                 </connections>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="q2q-EV-BCk">
-                                <rect key="frame" x="16" y="474" width="296" height="39"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="Grant Permission                                                ">
-                                    <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="permissionButtonWasPressed:" destination="cn3-Ws-60e" eventType="touchUpInside" id="TNN-kW-duO"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="9zr-e0-NX4" firstAttribute="trailing" secondItem="HN2-IM-iJW" secondAttribute="trailing" id="ACS-zp-ehl"/>
-                            <constraint firstItem="HN2-IM-iJW" firstAttribute="trailing" secondItem="q2q-EV-BCk" secondAttribute="trailing" constant="8" id="JIC-RA-FGk"/>
-                            <constraint firstItem="q2q-EV-BCk" firstAttribute="leading" secondItem="HN2-IM-iJW" secondAttribute="leading" constant="16" id="UZo-AJ-aGJ"/>
+                            <constraint firstItem="HN2-IM-iJW" firstAttribute="bottom" secondItem="9zr-e0-NX4" secondAttribute="bottom" constant="8" id="AGu-2Q-7sT"/>
                             <constraint firstItem="vn1-cU-Ybq" firstAttribute="leading" secondItem="HN2-IM-iJW" secondAttribute="leading" id="VW7-Jc-tjl"/>
-                            <constraint firstItem="9zr-e0-NX4" firstAttribute="top" secondItem="vn1-cU-Ybq" secondAttribute="bottom" constant="8" id="Yb6-dn-z0B"/>
-                            <constraint firstItem="HN2-IM-iJW" firstAttribute="bottom" secondItem="q2q-EV-BCk" secondAttribute="bottom" constant="6" id="ZaD-d8-6sk"/>
-                            <constraint firstItem="q2q-EV-BCk" firstAttribute="top" secondItem="9zr-e0-NX4" secondAttribute="bottom" constant="6" id="bNS-Bc-yuI"/>
+                            <constraint firstItem="9zr-e0-NX4" firstAttribute="top" secondItem="vn1-cU-Ybq" secondAttribute="bottom" constant="8" id="ZKV-qh-sDE"/>
                             <constraint firstItem="9zr-e0-NX4" firstAttribute="leading" secondItem="HN2-IM-iJW" secondAttribute="leading" id="gmd-aL-oji"/>
                             <constraint firstItem="vn1-cU-Ybq" firstAttribute="top" secondItem="HN2-IM-iJW" secondAttribute="top" id="nGL-ww-Ezt"/>
                             <constraint firstItem="vn1-cU-Ybq" firstAttribute="trailing" secondItem="HN2-IM-iJW" secondAttribute="trailing" id="qbe-rD-qEr"/>
@@ -331,7 +329,6 @@
                     <tabBarItem key="tabBarItem" title="Geotags" image="map" catalog="system" id="qMn-IA-P43"/>
                     <connections>
                         <outlet property="mapView" destination="vn1-cU-Ybq" id="HRX-3O-QgU"/>
-                        <outlet property="permissionButton" destination="q2q-EV-BCk" id="VR1-pQ-5l0"/>
                         <outlet property="tableView" destination="9zr-e0-NX4" id="EOe-pH-0xm"/>
                     </connections>
                 </viewController>
