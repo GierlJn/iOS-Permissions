@@ -27,12 +27,18 @@ class CameraViewController: UIViewController,  UIImagePickerControllerDelegate, 
     
     //@IBOutlet weak var permissionLabel: UIButton!
     @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var backCameraLabel: UILabel!
+    @IBOutlet weak var frontCameraLabel: UILabel!
+    @IBOutlet weak var countLabel: UILabel!
     
     let imagePicker = UIImagePickerController()
     var frontCamerasession: AVCaptureSession?
     var backCameraSession: AVCaptureSession?
     var frontCameraSampleBufferDelegate = FrontCameraSampleBufferDelegate()
     var backCameraSampleBufferDelegate = BackCameraSampleBufferDelegate()
+    
+    
+
     
     var grantPermissionButton:UIButton?
     var startButton:UIButton?
@@ -108,6 +114,10 @@ class CameraViewController: UIViewController,  UIImagePickerControllerDelegate, 
         let authStatus = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
         if authStatus == .authorized {
             startButton?.removeFromSuperview()
+            statusLabel.isHidden = false
+            backCameraLabel.isHidden = false
+            frontCameraLabel.isHidden = false
+            countLabel.isHidden = false
             setupBackCameraSession()
         }
     }
