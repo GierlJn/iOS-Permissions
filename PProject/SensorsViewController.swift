@@ -21,6 +21,7 @@ class SensorsViewController: UIViewController{
     @IBOutlet weak var deviceMotionSegmentedControl: UISegmentedControl!
     
     var motion = CMMotionManager()
+    
     var timer: Timer?
     
     private var selectedSensor: Sensor {

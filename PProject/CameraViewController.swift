@@ -62,15 +62,16 @@ class CameraViewController: UIViewController,  UIImagePickerControllerDelegate, 
         setupCollectionView()
         frontCameraSampleBufferDelegate.frontDelegate = self
         backCameraSampleBufferDelegate.backDelegate = self
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
         let authStatus = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
         if authStatus == .authorized {
             showStartButton()
         }else{
             showPermissionButton()
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
     }
     
     fileprivate func showStartButton() {
@@ -88,7 +89,7 @@ class CameraViewController: UIViewController,  UIImagePickerControllerDelegate, 
     
     fileprivate func showPermissionButton() {
         grantPermissionButton = UIButton(type: .roundedRect)
-        grantPermissionButton!.makeActionButton(title: "Grant \n permission")
+        grantPermissionButton!.makeActionButton(title: "Zugriff \n erlauben")
         grantPermissionButton!.addTarget(self, action: Selector(("grantPermissionButtonPressed")), for: .touchUpInside)
         self.view.addSubview(grantPermissionButton!)
         grantPermissionButton!.translatesAutoresizingMaskIntoConstraints = false

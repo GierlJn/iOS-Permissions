@@ -80,7 +80,7 @@ class PhotoDataViewController: UIViewController{
     
     fileprivate func showPermissionButton() {
         grantPermissionButton = UIButton(type: .roundedRect)
-        grantPermissionButton!.makeActionButton(title: "Grant \n permission")
+        grantPermissionButton!.makeActionButton(title: "Zugriff \n erlauben")
         grantPermissionButton!.addTarget(self, action: Selector(("grantPermissionButtonPressed")), for: .touchUpInside)
         self.view.addSubview(grantPermissionButton!)
         grantPermissionButton!.translatesAutoresizingMaskIntoConstraints = false
@@ -94,15 +94,21 @@ class PhotoDataViewController: UIViewController{
     @objc func grantPermissionButtonPressed(){
         PHPhotoLibrary.requestAuthorization({ auth in
             if auth == .authorized {
-                self.grantPermissionButton?.removeFromSuperview()
-                self.showStartButton()
+                DispatchQueue.main.async {
+                    self.grantPermissionButton?.isHidden = true
+                    self.grantPermissionButton?.removeFromSuperview()
+                    self.showStartButton()
+                }
+                
             } else if auth == .denied {
+                DispatchQueue.main.async {
                 let alert = UIAlertController(title: "", message: "Berechtigung wird benötigt um Daten aus den Fotos zu laden.", preferredStyle: .alert)
                 let okayButton = UIAlertAction(title: "Ok", style: .default, handler: { action in
                     alert.dismiss(animated: true)
                 })
                 alert.addAction(okayButton)
                 self.present(alert, animated: true)
+                }
             }
         })
     }
@@ -111,6 +117,7 @@ class PhotoDataViewController: UIViewController{
         let auth = PHPhotoLibrary.authorizationStatus()
         if auth == .authorized {
             startButton?.isHidden = true
+            startButton?.removeFromSuperview()
             self.fetchPhotos()
             self.setupAnnotations()
         }
@@ -162,6 +169,7 @@ extension PhotoDataViewController: MKMapViewDelegate{
         selectedImage?.loadDetails {
             self.tableView.isHidden = false
             self.infoLabel?.isHidden = true
+            self.infoLabel?.removeFromSuperview()
             self.tableView.reloadData()
         }
     }

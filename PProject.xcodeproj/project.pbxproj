@@ -11,6 +11,7 @@
 		B909C3CE242CBA9E0026936E /* BackImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B909C3CC242CBA9E0026936E /* BackImageCollectionViewCell.xib */; };
 		B91D29FA2430B3CD00974398 /* MetaDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91D29F82430B3CD00974398 /* MetaDataTableViewCell.swift */; };
 		B91D29FB2430B3CD00974398 /* MetaDataTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B91D29F92430B3CD00974398 /* MetaDataTableViewCell.xib */; };
+		B93C3604245C2D050054072F /* MicrophoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93C3603245C2D050054072F /* MicrophoneViewController.swift */; };
 		B950691F245899580011B405 /* UIButton+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B950691E245899580011B405 /* UIButton+ext.swift */; };
 		B969F7A22434713900B77C8E /* PhotoDataViewController+TableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B969F7A12434713900B77C8E /* PhotoDataViewController+TableViewDelegate.swift */; };
 		B969F7A42434798200B77C8E /* SensorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B969F7A32434798200B77C8E /* SensorsViewController.swift */; };
@@ -33,6 +34,7 @@
 		B909C3CC242CBA9E0026936E /* BackImageCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BackImageCollectionViewCell.xib; sourceTree = "<group>"; };
 		B91D29F82430B3CD00974398 /* MetaDataTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetaDataTableViewCell.swift; sourceTree = "<group>"; };
 		B91D29F92430B3CD00974398 /* MetaDataTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MetaDataTableViewCell.xib; sourceTree = "<group>"; };
+		B93C3603245C2D050054072F /* MicrophoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicrophoneViewController.swift; sourceTree = "<group>"; };
 		B950691E245899580011B405 /* UIButton+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+ext.swift"; sourceTree = "<group>"; };
 		B969F7A12434713900B77C8E /* PhotoDataViewController+TableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhotoDataViewController+TableViewDelegate.swift"; sourceTree = "<group>"; };
 		B969F7A32434798200B77C8E /* SensorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorsViewController.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 				B91D29F82430B3CD00974398 /* MetaDataTableViewCell.swift */,
 				B969F7A32434798200B77C8E /* SensorsViewController.swift */,
 				B91D29F92430B3CD00974398 /* MetaDataTableViewCell.xib */,
+				B93C3603245C2D050054072F /* MicrophoneViewController.swift */,
 				B9ABA2D2241B721300F324F0 /* Main.storyboard */,
 				B9ABA2D5241B721400F324F0 /* Assets.xcassets */,
 				B9ABA2D7241B721400F324F0 /* LaunchScreen.storyboard */,
@@ -184,6 +187,7 @@
 				B9C2206F2427D22F00EF7C58 /* ImageCollectionViewCell.swift in Sources */,
 				B9ABA2D1241B721300F324F0 /* SecondViewController.swift in Sources */,
 				B950691F245899580011B405 /* UIButton+ext.swift in Sources */,
+				B93C3604245C2D050054072F /* MicrophoneViewController.swift in Sources */,
 				B9C220662427CF9500EF7C58 /* ImageCollectionViewProvider.swift in Sources */,
 				B9B73D89242E0866008A5B8D /* PhotoDataViewController.swift in Sources */,
 				B909C3CD242CBA9E0026936E /* BackImageCollectionViewCell.swift in Sources */,

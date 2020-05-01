@@ -31,7 +31,7 @@
                                     <constraint firstAttribute="height" constant="44" id="fbl-eO-N5f"/>
                                 </constraints>
                                 <items>
-                                    <navigationItem title="Camera " id="VzR-TH-s9H"/>
+                                    <navigationItem title="Kamera" id="VzR-TH-s9H"/>
                                 </items>
                             </navigationBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="LFB-HJ-eK2">
@@ -298,7 +298,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2250" y="0.0"/>
+            <point key="canvasLocation" x="3049" y="0.0"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -312,6 +312,7 @@
                     <connections>
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="cn3-Ws-60e" kind="relationship" relationship="viewControllers" id="XIH-tv-e4z"/>
+                        <segue destination="0pr-w1-2gZ" kind="relationship" relationship="viewControllers" id="T4h-EN-gRz"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                     </connections>
                 </tabBarController>
@@ -363,10 +364,59 @@
             </objects>
             <point key="canvasLocation" x="1551" y="0.0"/>
         </scene>
+        <!--Mikrofon-->
+        <scene sceneID="f4q-eE-cbK">
+            <objects>
+                <viewController id="0pr-w1-2gZ" customClass="MicrophoneViewController" customModule="PProject" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kwc-5o-6jf">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MYc-Yw-hw2">
+                                <rect key="frame" x="16" y="475" width="288" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="oyB-v8-Syw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RwO-A8-Y9I">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="d7n-oC-ub9"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="Mikrofon" id="E01-Qf-W1C"/>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="HZq-zD-YEt" firstAttribute="trailing" secondItem="MYc-Yw-hw2" secondAttribute="trailing" constant="16" id="9G2-A7-6o5"/>
+                            <constraint firstItem="RwO-A8-Y9I" firstAttribute="trailing" secondItem="HZq-zD-YEt" secondAttribute="trailing" id="B7s-p2-gR9"/>
+                            <constraint firstItem="MYc-Yw-hw2" firstAttribute="centerX" secondItem="kwc-5o-6jf" secondAttribute="centerX" id="Imt-2q-zZs"/>
+                            <constraint firstItem="MYc-Yw-hw2" firstAttribute="leading" secondItem="HZq-zD-YEt" secondAttribute="leading" constant="16" id="fJi-Sj-0dj"/>
+                            <constraint firstItem="RwO-A8-Y9I" firstAttribute="top" secondItem="HZq-zD-YEt" secondAttribute="top" id="ktF-iZ-qzy"/>
+                            <constraint firstItem="RwO-A8-Y9I" firstAttribute="leading" secondItem="HZq-zD-YEt" secondAttribute="leading" id="naC-Kx-NHj"/>
+                            <constraint firstItem="HZq-zD-YEt" firstAttribute="bottom" secondItem="MYc-Yw-hw2" secondAttribute="bottom" constant="16" id="nnf-5V-Pgg"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="HZq-zD-YEt"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Mikrofon" image="mic" catalog="system" id="p4k-RR-k9O"/>
+                    <connections>
+                        <outlet property="statusLabel" destination="MYc-Yw-hw2" id="mCe-48-2Jl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7c5-Tx-99Y" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2295" y="0.0"/>
+        </scene>
     </scenes>
     <resources>
         <image name="camera" catalog="system" width="64" height="48"/>
         <image name="map" catalog="system" width="64" height="56"/>
+        <image name="mic" catalog="system" width="54" height="64"/>
         <image name="safari" catalog="system" width="64" height="60"/>
     </resources>
 </document>
