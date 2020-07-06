@@ -23,9 +23,6 @@ enum CaptureState{
 
 class CameraViewController: UIViewController,  UIImagePickerControllerDelegate, UINavigationControllerDelegate, FrontCameraDelegate, BackCameraDelegate{
     
-    
-    
-    //@IBOutlet weak var permissionLabel: UIButton!
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var backCameraLabel: UILabel!
     @IBOutlet weak var frontCameraLabel: UILabel!
@@ -36,9 +33,6 @@ class CameraViewController: UIViewController,  UIImagePickerControllerDelegate, 
     var backCameraSession: AVCaptureSession?
     var frontCameraSampleBufferDelegate = FrontCameraSampleBufferDelegate()
     var backCameraSampleBufferDelegate = BackCameraSampleBufferDelegate()
-    
-    
-
     
     var grantPermissionButton:UIButton?
     var startButton:UIButton?
@@ -129,8 +123,6 @@ class CameraViewController: UIViewController,  UIImagePickerControllerDelegate, 
         }
     }
     
-    
-    
     func getStatus()->String{
         var labelString = "Status: "
         switch(self.captureState){
@@ -139,10 +131,9 @@ class CameraViewController: UIViewController,  UIImagePickerControllerDelegate, 
         case .backCameraActive:
             labelString.append(contentsOf: "Back camera active")
         case .inactive:
-            labelString.append(contentsOf: "No camera active")
+            labelString.append(contentsOf: "Frontkamera aktiv")
         }
         return labelString
-        
     }
     
     func frontPictureTaken(image: CIImage) {
@@ -221,14 +212,15 @@ class CameraViewController: UIViewController,  UIImagePickerControllerDelegate, 
     func setupBackCameraSession() {
         backCameraSession = AVCaptureSession()
         guard let backCameraSession = backCameraSession else { return }
-        guard let frontCamera = AVCaptureDevice.default(AVCaptureDevice.DeviceType.builtInWideAngleCamera, for: AVMediaType.video, position: .back) else { return }
+        guard let camera = AVCaptureDevice.default(AVCaptureDevice.DeviceType.builtInWideAngleCamera, for: AVMediaType.video, position: .back) else { return }
         self.captureState = .backCameraActive
         do {
-            let input = try AVCaptureDeviceInput(device: frontCamera)
+            let input = try AVCaptureDeviceInput(device: camera)
             backCameraSession.beginConfiguration()
             backCameraSession.addInput(input)
             let output = AVCaptureVideoDataOutput()
             backCameraSession.addOutput(output)
+            
             backCameraSession.commitConfiguration()
             let queue = DispatchQueue(label: "backBufferOutput.queue")
             output.setSampleBufferDelegate(backCameraSampleBufferDelegate, queue: queue)
@@ -242,22 +234,21 @@ class CameraViewController: UIViewController,  UIImagePickerControllerDelegate, 
 
 class FrontCameraSampleBufferDelegate: NSObject,AVCaptureVideoDataOutputSampleBufferDelegate {
     weak var frontDelegate: FrontCameraDelegate?
-    var skipCounter = 0
-    var takenPictures = 0
+    var skipFrameCount = 0
+    var pictureCount = 0
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer)
         let attachments = CMCopyDictionaryOfAttachments(allocator: kCFAllocatorDefault, target: sampleBuffer, attachmentMode: kCMAttachmentMode_ShouldPropagate)
         let ciImage = CIImage(cvImageBuffer: pixelBuffer!, options: attachments as? [CIImageOption : Any])
         
-        self.skipCounter += 1
-        if self.skipCounter % 30 == 0 {
-            if(takenPictures >= 10){
+        self.skipFrameCount += 1
+        if self.skipFrameCount % 30 == 0 {
+            if(pictureCount >= 10){
                 frontDelegate?.finishFrontSession()
             }
             else{
                 frontDelegate?.frontPictureTaken(image: ciImage)
-                takenPictures += 1
-                
+                pictureCount += 1
             }
             
         }
@@ -266,20 +257,19 @@ class FrontCameraSampleBufferDelegate: NSObject,AVCaptureVideoDataOutputSampleBu
 
 class BackCameraSampleBufferDelegate: NSObject,AVCaptureVideoDataOutputSampleBufferDelegate {
     weak var backDelegate: BackCameraDelegate?
-    var skipCounter = 0
-    var takenPictures = 0
+    var skipFrameCount = 0
+    var pictureCount = 0
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer)
         let attachments = CMCopyDictionaryOfAttachments(allocator: kCFAllocatorDefault, target: sampleBuffer, attachmentMode: kCMAttachmentMode_ShouldPropagate)
         let ciImage = CIImage(cvImageBuffer: pixelBuffer!, options: attachments as? [CIImageOption : Any])
-        
-        skipCounter += 1
-        if skipCounter % 30 == 0 {
-            if(takenPictures >= 10){
+        skipFrameCount += 1
+        if skipFrameCount % 30 == 0 {
+            if(pictureCount >= 10){
                 backDelegate?.finishBackSession()
             }else{
                 backDelegate?.backPictureTaken(image: ciImage)
-                takenPictures += 1
+                pictureCount += 1
             }
             
         }

@@ -12,7 +12,7 @@ extension PhotoDataViewController: UITableViewDelegate, UITableViewDataSource{
         }
         switch(section){
         case 0:
-            return 3
+            return 2
         case 1:
             return 3
         case 2:

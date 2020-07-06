@@ -15,6 +15,8 @@ class MicrophoneViewController: UIViewController, AVAudioRecorderDelegate{
     var counter = 0.0
     var timer = Timer()
     
+    @IBOutlet weak var statusLabel2: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if !checkPermission(){
@@ -25,6 +27,7 @@ class MicrophoneViewController: UIViewController, AVAudioRecorderDelegate{
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        statusLabel2.text = "Aufnahme nicht aktiv"
     }
     
     
@@ -122,6 +125,7 @@ class MicrophoneViewController: UIViewController, AVAudioRecorderDelegate{
             audioRecorder.record()
             startTimer()
             startButton!.setTitle("Aufnahme beenden", for: .normal)
+            statusLabel2.text = "Aufnahme aktiv"
         } catch {
             finishRecording(success: false)
         }
@@ -131,6 +135,7 @@ class MicrophoneViewController: UIViewController, AVAudioRecorderDelegate{
         audioRecorder.stop()
         audioRecorder = nil
         stopTimer()
+        statusLabel2.text = "Aufnahme nicht aktiv"
         if success {
             startButton!.setTitle("Aufnahme Neustarten", for: .normal)
         } else {

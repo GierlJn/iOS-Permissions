@@ -133,7 +133,7 @@ class PhotoDataViewController: UIViewController{
     
     private func fetchPhotos() {
         let options = PHFetchOptions()
-        options.includeHiddenAssets = true
+        //options.includeHiddenAssets = true
         var locations = [ImageData]()
         let photos = PHAsset.fetchAssets(with: .image, options: options)
         for index in 0..<photos.count{

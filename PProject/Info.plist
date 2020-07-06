@@ -4,6 +4,8 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleDisplayName</key>
+	<string>PermissionsTestApp</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -23,7 +25,7 @@
 	<key>NSCameraUsageDescription</key>
 	<string>Berechtigung für Kamera</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>Berechtigung für Mikrofon</string>
+	<string>Hier befindet sich ein kurzer Text, welcher den Grund für die Anfrage nennen soll.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Berechtigung für Fotos</string>
 	<key>UIApplicationSceneManifest</key>

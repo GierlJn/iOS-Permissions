@@ -201,7 +201,7 @@ fileprivate enum Sensor: Int{
     func getString()->String{
         switch(self){
         case .accelerator:
-            return  "Accelerometer"
+            return  "Beschleunigungssensor"
         case .gyro:
             return "Gyrosensor"
         case .magnetoMeter:
