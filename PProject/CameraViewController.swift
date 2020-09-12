@@ -20,7 +20,6 @@ enum CaptureState{
 }
 
 
-
 class CameraViewController: UIViewController,  UIImagePickerControllerDelegate, UINavigationControllerDelegate, FrontCameraDelegate, BackCameraDelegate{
     
     @IBOutlet weak var statusLabel: UILabel!
@@ -39,16 +38,17 @@ class CameraViewController: UIViewController,  UIImagePickerControllerDelegate, 
     
     @IBOutlet weak var imagesTakenLabel: UILabel!
     
-    var captureState = CaptureState.inactive{
-        didSet {
-            updateStatusLabel()
-        }
-    }
     @IBOutlet weak var backCameraCollectionView: UICollectionView!
     @IBOutlet weak var frontCameraCollectionView: UICollectionView!
     
     let imageCollectionViewProvider = ImageCollectionViewProvider()
     let backImageCollectionProvider = BackImageCollectionViewProvider()
+    
+    var captureState = CaptureState.inactive{
+        didSet {
+            updateStatusLabel()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,16 +56,16 @@ class CameraViewController: UIViewController,  UIImagePickerControllerDelegate, 
         setupCollectionView()
         frontCameraSampleBufferDelegate.frontDelegate = self
         backCameraSampleBufferDelegate.backDelegate = self
+        showActionButton()
+    }
+    
+    fileprivate func showActionButton() {
         let authStatus = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
         if authStatus == .authorized {
             showStartButton()
         }else{
             showPermissionButton()
         }
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        
     }
     
     fileprivate func showStartButton() {

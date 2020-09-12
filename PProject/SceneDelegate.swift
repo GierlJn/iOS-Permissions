@@ -1,10 +1,4 @@
-//
-//  SceneDelegate.swift
-//  PProject
-//
-//  Created by Julian Gierl on 13.03.20.
-//  Copyright © 2020 Julian Gierl. All rights reserved.
-//
+
 
 import UIKit
 @available(iOS 13.0, *)
