@@ -23,7 +23,7 @@ final class MapAnnotation: NSObject, MKAnnotation{
     }
 }
 
-class PhotoDataViewController: UIViewController{
+class MetaDataVC: UIViewController{
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var tableView: UITableView!
@@ -161,7 +161,7 @@ class PhotoDataViewController: UIViewController{
     
 }
 
-extension PhotoDataViewController: MKMapViewDelegate{
+extension MetaDataVC: MKMapViewDelegate{
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         let selectedAnnotation = self.mapView?.selectedAnnotations.first as? MapAnnotation
         let image = images[selectedAnnotation!.id]

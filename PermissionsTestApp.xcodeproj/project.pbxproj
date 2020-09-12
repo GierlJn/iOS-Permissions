@@ -13,16 +13,15 @@
 		B91D29FB2430B3CD00974398 /* MetaDataTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B91D29F92430B3CD00974398 /* MetaDataTableViewCell.xib */; };
 		B93C3604245C2D050054072F /* MicrophoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93C3603245C2D050054072F /* MicrophoneViewController.swift */; };
 		B950691F245899580011B405 /* UIButton+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B950691E245899580011B405 /* UIButton+ext.swift */; };
-		B969F7A22434713900B77C8E /* PhotoDataViewController+TableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B969F7A12434713900B77C8E /* PhotoDataViewController+TableViewDelegate.swift */; };
+		B969F7A22434713900B77C8E /* MetaDataVC+TableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B969F7A12434713900B77C8E /* MetaDataVC+TableViewDelegate.swift */; };
 		B969F7A42434798200B77C8E /* SensorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B969F7A32434798200B77C8E /* SensorsViewController.swift */; };
 		B9ABA2CB241B721300F324F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9ABA2CA241B721300F324F0 /* AppDelegate.swift */; };
 		B9ABA2CD241B721300F324F0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9ABA2CC241B721300F324F0 /* SceneDelegate.swift */; };
 		B9ABA2CF241B721300F324F0 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9ABA2CE241B721300F324F0 /* CameraViewController.swift */; };
-		B9ABA2D1241B721300F324F0 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9ABA2D0241B721300F324F0 /* SecondViewController.swift */; };
 		B9ABA2D4241B721300F324F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9ABA2D2241B721300F324F0 /* Main.storyboard */; };
 		B9ABA2D6241B721400F324F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9ABA2D5241B721400F324F0 /* Assets.xcassets */; };
 		B9ABA2D9241B721400F324F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9ABA2D7241B721400F324F0 /* LaunchScreen.storyboard */; };
-		B9B73D89242E0866008A5B8D /* PhotoDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B73D88242E0866008A5B8D /* PhotoDataViewController.swift */; };
+		B9B73D89242E0866008A5B8D /* MetaDataVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B73D88242E0866008A5B8D /* MetaDataVC.swift */; };
 		B9B73D8B242E089E008A5B8D /* ImageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B73D8A242E089E008A5B8D /* ImageData.swift */; };
 		B9C220662427CF9500EF7C58 /* ImageCollectionViewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C220652427CF9500EF7C58 /* ImageCollectionViewProvider.swift */; };
 		B9C2206F2427D22F00EF7C58 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C2206D2427D22F00EF7C58 /* ImageCollectionViewCell.swift */; };
@@ -36,18 +35,17 @@
 		B91D29F92430B3CD00974398 /* MetaDataTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MetaDataTableViewCell.xib; sourceTree = "<group>"; };
 		B93C3603245C2D050054072F /* MicrophoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicrophoneViewController.swift; sourceTree = "<group>"; };
 		B950691E245899580011B405 /* UIButton+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+ext.swift"; sourceTree = "<group>"; };
-		B969F7A12434713900B77C8E /* PhotoDataViewController+TableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhotoDataViewController+TableViewDelegate.swift"; sourceTree = "<group>"; };
+		B969F7A12434713900B77C8E /* MetaDataVC+TableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MetaDataVC+TableViewDelegate.swift"; sourceTree = "<group>"; };
 		B969F7A32434798200B77C8E /* SensorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorsViewController.swift; sourceTree = "<group>"; };
 		B9ABA2C7241B721300F324F0 /* PProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9ABA2CA241B721300F324F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B9ABA2CC241B721300F324F0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		B9ABA2CE241B721300F324F0 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
-		B9ABA2D0241B721300F324F0 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		B9ABA2D3241B721300F324F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B9ABA2D5241B721400F324F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B9ABA2D8241B721400F324F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B9ABA2DA241B721400F324F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B9B73D88242E0866008A5B8D /* PhotoDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDataViewController.swift; sourceTree = "<group>"; };
+		B9B73D88242E0866008A5B8D /* MetaDataVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetaDataVC.swift; sourceTree = "<group>"; };
 		B9B73D8A242E089E008A5B8D /* ImageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageData.swift; sourceTree = "<group>"; };
 		B9C220652427CF9500EF7C58 /* ImageCollectionViewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewProvider.swift; sourceTree = "<group>"; };
 		B9C2206D2427D22F00EF7C58 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -65,6 +63,74 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B96BE8E6250CC1E400AAE43D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B96BE8E7250CC20000AAE43D /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				B9B73D88242E0866008A5B8D /* MetaDataVC.swift */,
+				B969F7A12434713900B77C8E /* MetaDataVC+TableViewDelegate.swift */,
+				B969F7A32434798200B77C8E /* SensorsViewController.swift */,
+				B93C3603245C2D050054072F /* MicrophoneViewController.swift */,
+				B9ABA2CE241B721300F324F0 /* CameraViewController.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		B96BE8E8250CC4E600AAE43D /* Custom Views */ = {
+			isa = PBXGroup;
+			children = (
+				B96BE8E9250CC50900AAE43D /* Cells */,
+			);
+			path = "Custom Views";
+			sourceTree = "<group>";
+		};
+		B96BE8E9250CC50900AAE43D /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				B91D29F92430B3CD00974398 /* MetaDataTableViewCell.xib */,
+				B91D29F82430B3CD00974398 /* MetaDataTableViewCell.swift */,
+				B909C3CC242CBA9E0026936E /* BackImageCollectionViewCell.xib */,
+				B909C3CB242CBA9E0026936E /* BackImageCollectionViewCell.swift */,
+				B9C2206E2427D22F00EF7C58 /* ImageCollectionViewCell.xib */,
+				B9C2206D2427D22F00EF7C58 /* ImageCollectionViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		B96BE8EA250CC54D00AAE43D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B950691E245899580011B405 /* UIButton+ext.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		B96BE8EB250CC57A00AAE43D /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				B9ABA2CA241B721300F324F0 /* AppDelegate.swift */,
+				B9ABA2CC241B721300F324F0 /* SceneDelegate.swift */,
+				B9ABA2D2241B721300F324F0 /* Main.storyboard */,
+				B9ABA2D5241B721400F324F0 /* Assets.xcassets */,
+				B9ABA2D7241B721400F324F0 /* LaunchScreen.storyboard */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		B96BE8EC250CC5BF00AAE43D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B9B73D8A242E089E008A5B8D /* ImageData.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		B9ABA2BE241B721300F324F0 = {
 			isa = PBXGroup;
 			children = (
@@ -84,26 +150,13 @@
 		B9ABA2C9241B721300F324F0 /* PProject */ = {
 			isa = PBXGroup;
 			children = (
-				B9ABA2CA241B721300F324F0 /* AppDelegate.swift */,
-				B9ABA2CC241B721300F324F0 /* SceneDelegate.swift */,
-				B9ABA2CE241B721300F324F0 /* CameraViewController.swift */,
-				B9ABA2D0241B721300F324F0 /* SecondViewController.swift */,
+				B96BE8EC250CC5BF00AAE43D /* Model */,
+				B96BE8E6250CC1E400AAE43D /* Views */,
 				B9C220652427CF9500EF7C58 /* ImageCollectionViewProvider.swift */,
-				B9C2206D2427D22F00EF7C58 /* ImageCollectionViewCell.swift */,
-				B950691E245899580011B405 /* UIButton+ext.swift */,
-				B9C2206E2427D22F00EF7C58 /* ImageCollectionViewCell.xib */,
-				B909C3CB242CBA9E0026936E /* BackImageCollectionViewCell.swift */,
-				B909C3CC242CBA9E0026936E /* BackImageCollectionViewCell.xib */,
-				B9B73D88242E0866008A5B8D /* PhotoDataViewController.swift */,
-				B969F7A12434713900B77C8E /* PhotoDataViewController+TableViewDelegate.swift */,
-				B9B73D8A242E089E008A5B8D /* ImageData.swift */,
-				B91D29F82430B3CD00974398 /* MetaDataTableViewCell.swift */,
-				B969F7A32434798200B77C8E /* SensorsViewController.swift */,
-				B91D29F92430B3CD00974398 /* MetaDataTableViewCell.xib */,
-				B93C3603245C2D050054072F /* MicrophoneViewController.swift */,
-				B9ABA2D2241B721300F324F0 /* Main.storyboard */,
-				B9ABA2D5241B721400F324F0 /* Assets.xcassets */,
-				B9ABA2D7241B721400F324F0 /* LaunchScreen.storyboard */,
+				B96BE8EA250CC54D00AAE43D /* Extensions */,
+				B96BE8E7250CC20000AAE43D /* Screens */,
+				B96BE8E8250CC4E600AAE43D /* Custom Views */,
+				B96BE8EB250CC57A00AAE43D /* Support */,
 				B9ABA2DA241B721400F324F0 /* Info.plist */,
 			);
 			path = PProject;
@@ -185,16 +238,15 @@
 			files = (
 				B9B73D8B242E089E008A5B8D /* ImageData.swift in Sources */,
 				B9C2206F2427D22F00EF7C58 /* ImageCollectionViewCell.swift in Sources */,
-				B9ABA2D1241B721300F324F0 /* SecondViewController.swift in Sources */,
 				B950691F245899580011B405 /* UIButton+ext.swift in Sources */,
 				B93C3604245C2D050054072F /* MicrophoneViewController.swift in Sources */,
 				B9C220662427CF9500EF7C58 /* ImageCollectionViewProvider.swift in Sources */,
-				B9B73D89242E0866008A5B8D /* PhotoDataViewController.swift in Sources */,
+				B9B73D89242E0866008A5B8D /* MetaDataVC.swift in Sources */,
 				B909C3CD242CBA9E0026936E /* BackImageCollectionViewCell.swift in Sources */,
 				B969F7A42434798200B77C8E /* SensorsViewController.swift in Sources */,
 				B9ABA2CF241B721300F324F0 /* CameraViewController.swift in Sources */,
 				B9ABA2CB241B721300F324F0 /* AppDelegate.swift in Sources */,
-				B969F7A22434713900B77C8E /* PhotoDataViewController+TableViewDelegate.swift in Sources */,
+				B969F7A22434713900B77C8E /* MetaDataVC+TableViewDelegate.swift in Sources */,
 				B91D29FA2430B3CD00974398 /* MetaDataTableViewCell.swift in Sources */,
 				B9ABA2CD241B721300F324F0 /* SceneDelegate.swift in Sources */,
 			);

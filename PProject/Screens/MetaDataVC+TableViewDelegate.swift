@@ -1,7 +1,7 @@
 import UIKit
 import Foundation
 
-extension PhotoDataViewController: UITableViewDelegate, UITableViewDataSource{
+extension MetaDataVC: UITableViewDelegate, UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
         return 4
     }
