@@ -197,7 +197,6 @@ class SensorsViewController: UIViewController{
 
 fileprivate enum Sensor: Int{
     case  accelerator, gyro, magnetoMeter, deviceMotion
-    //static let types: [Sensor] = [.accelerator, .gyro, .magnetoMeter, .deviceMotion]
     func getString()->String{
         switch(self){
         case .accelerator:
@@ -214,7 +213,6 @@ fileprivate enum Sensor: Int{
 
 fileprivate enum DeviceMotionSensor: Int{
     case  attitude, gravity, rotationRate, userAcceleration
-    //static let types: [DeviceMotionSensor] = [.attitude, .gravity, .rotationRate, .userAcceleration]
     func getString()->String{
         switch(self){
         case .attitude:
