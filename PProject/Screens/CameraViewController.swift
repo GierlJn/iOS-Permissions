@@ -140,7 +140,7 @@ class CameraViewController: UIViewController,  UIImagePickerControllerDelegate, 
         self.imageCollectionViewProvider.images.append(UIImage(ciImage: image.oriented(forExifOrientation: 6)))
         DispatchQueue.main.async {
             self.frontCameraCollectionView.reloadData()
-            self.frontCameraCollectionView.scrollToLast()
+            self.frontCameraCollectionView.scrollToLastItem()
             self.updateLabel()
         }
     }
@@ -149,7 +149,7 @@ class CameraViewController: UIViewController,  UIImagePickerControllerDelegate, 
         self.backImageCollectionProvider.images.append(UIImage(ciImage: image.oriented(forExifOrientation: 6)))
         DispatchQueue.main.async {
             self.backCameraCollectionView.reloadData()
-            self.backCameraCollectionView.scrollToLast()
+            self.backCameraCollectionView.scrollToLastItem()
             self.updateLabel()
         }
     }

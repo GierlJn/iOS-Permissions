@@ -13,7 +13,7 @@ class ImageCollectionViewProvider: NSObject, UICollectionViewDelegate, UICollect
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "secretImageCell", for: indexPath) as! ImageCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageCollectionViewCell.reuseIdentifier, for: indexPath) as! ImageCollectionViewCell
         let image = images[indexPath.row]
         cell.imageView.image = image
         cell.imageView.contentMode = .scaleToFill
@@ -30,7 +30,7 @@ class BackImageCollectionViewProvider: NSObject, UICollectionViewDelegate, UICol
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "backSecretImageCell", for: indexPath) as! BackImageCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BackImageCollectionViewCell.reuseIdentifier, for: indexPath) as! BackImageCollectionViewCell
         let image = images[indexPath.row]
         cell.imageView.image = image
         cell.imageView.contentMode = .scaleToFill
@@ -40,32 +40,22 @@ class BackImageCollectionViewProvider: NSObject, UICollectionViewDelegate, UICol
 
 extension UICollectionView {
     func scrollNext() {
-        
         let offset = CGFloat(floor(self.contentOffset.x + self.bounds.size.width))
         self.scrollFrame(offset: offset)
     }
     
     func scrollFrame(offset : CGFloat) {
-        guard offset <= self.contentSize.width - self.bounds.size.width else {
-            print(offset)
+        guard offset <= self.contentSize.width - self.bounds.size.width, offset >= 0 else {
             return }
-        guard offset >= 0 else { return }
-        print("moved")
         self.setContentOffset(CGPoint(x: offset, y: self.contentOffset.y), animated: true)
     }
-}
-
-extension UICollectionView {
-    func scrollToLast() {
-
+    
+    func scrollToLastItem() {
         let lastSection = 0
-
         guard numberOfItems(inSection: lastSection) > 0 else {
             return
         }
-
-        let lastItemIndexPath = IndexPath(item: numberOfItems(inSection: lastSection) - 1,
-                                          section: lastSection)
+        let lastItemIndexPath = IndexPath(item: numberOfItems(inSection: lastSection) - 1, section: lastSection)
         scrollToItem(at: lastItemIndexPath, at: .right, animated: true)
     }
 }
