@@ -4,12 +4,6 @@ import MapKit
 import UIKit
 import Photos
 
-fileprivate enum AppState{
-    case permissionNotGiven
-    case permissionGiven
-    case dataIsLoaded
-}
-
 final class MapAnnotation: NSObject, MKAnnotation{
     let coordinate: CLLocationCoordinate2D
     var image: UIImage?
