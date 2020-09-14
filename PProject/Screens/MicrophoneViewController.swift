@@ -151,7 +151,7 @@ class MicrophoneViewController: UIViewController, AVAudioRecorderDelegate{
     fileprivate func showStartButton() {
         startButton = UIButton(type: .roundedRect)
         startButton!.makeActionButton(title: "Aufnahme \n starten")
-        startButton!.addTarget(self, action: Selector(("startButtonPressed")), for: .touchUpInside)
+        startButton!.addTarget(self, action: #selector(self.startButtonPressed), for: .touchUpInside)
         self.view.addSubview(startButton!)
         startButton!.translatesAutoresizingMaskIntoConstraints = false
         let centerYAnchorConstraint = startButton!.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor)
@@ -164,7 +164,7 @@ class MicrophoneViewController: UIViewController, AVAudioRecorderDelegate{
     fileprivate func showPermissionButton() {
         grantPermissionButton = UIButton(type: .roundedRect)
         grantPermissionButton!.makeActionButton(title: "Zugriff \n erlauben")
-        grantPermissionButton!.addTarget(self, action: Selector(("grantPermissionButtonPressed")), for: .touchUpInside)
+        grantPermissionButton!.addTarget(self, action: #selector(self.grantPermissionButtonPressed), for: .touchUpInside)
         self.view.addSubview(grantPermissionButton!)
         grantPermissionButton!.translatesAutoresizingMaskIntoConstraints = false
         let centerYAnchorConstraint = grantPermissionButton!.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor)
