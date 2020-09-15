@@ -64,14 +64,7 @@ class MetaDataVC: UIViewController{
     fileprivate func showPermissionButton() {
         grantPermissionButton = UIButton(type: .roundedRect)
         grantPermissionButton!.makeActionButton(title: "Zugriff \n erlauben", view: self.view)
-        //grantPermissionButton!.addTarget(self, action: #selector(self.grantPermissionButtonPressed), for: .touchUpInside)
-        self.view.addSubview(grantPermissionButton!)
-        grantPermissionButton!.translatesAutoresizingMaskIntoConstraints = false
-        let centerYAnchorConstraint = grantPermissionButton!.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor)
-        let margins = view.layoutMarginsGuide
-        let centerXAnchorConstraint = grantPermissionButton!.centerXAnchor.constraint(equalTo: margins.centerXAnchor)
-        centerYAnchorConstraint.isActive = true
-        centerXAnchorConstraint.isActive = true
+        grantPermissionButton!.addTarget(self, action: #selector(self.grantPermissionButtonPressed), for: .touchUpInside)
     }
     
     @objc func grantPermissionButtonPressed(){
