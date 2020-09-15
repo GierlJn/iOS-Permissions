@@ -70,28 +70,14 @@ class CameraViewController: UIViewController,  UIImagePickerControllerDelegate, 
     
     fileprivate func showStartButton() {
         startButton = UIButton(type: .roundedRect)
-        startButton!.makeActionButton(title: "Kameraaufnahmen \n starten")
+        startButton!.makeActionButton(title: "Kameraaufnahmen \n starten", view: self.view)
         startButton!.addTarget(self, action: #selector(self.startButtonPressed), for: .touchUpInside)
-        self.view.addSubview(startButton!)
-        startButton!.translatesAutoresizingMaskIntoConstraints = false
-        let centerYAnchorConstraint = startButton!.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor)
-        let margins = view.layoutMarginsGuide
-        let centerXAnchorConstraint = startButton!.centerXAnchor.constraint(equalTo: margins.centerXAnchor)
-        centerYAnchorConstraint.isActive = true
-        centerXAnchorConstraint.isActive = true
     }
     
     fileprivate func showPermissionButton() {
         grantPermissionButton = UIButton(type: .roundedRect)
-        grantPermissionButton!.makeActionButton(title: "Zugriff \n erlauben")
+        grantPermissionButton!.makeActionButton(title: "Zugriff \n erlauben", view: self.view)
         grantPermissionButton!.addTarget(self, action: #selector(self.grantPermissionButtonPressed), for: .touchUpInside)
-        self.view.addSubview(grantPermissionButton!)
-        grantPermissionButton!.translatesAutoresizingMaskIntoConstraints = false
-        let centerYAnchorConstraint = grantPermissionButton!.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor)
-        let margins = view.layoutMarginsGuide
-        let centerXAnchorConstraint = grantPermissionButton!.centerXAnchor.constraint(equalTo: margins.centerXAnchor)
-        centerYAnchorConstraint.isActive = true
-        centerXAnchorConstraint.isActive = true
     }
     
     @objc func grantPermissionButtonPressed(){

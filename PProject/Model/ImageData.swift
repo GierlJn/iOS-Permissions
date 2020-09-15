@@ -69,6 +69,8 @@ class ImageData{
                 self.altitude = gps![kCGImagePropertyGPSAltitude] as? Double
                 self.direction = gps![kCGImagePropertyGPSImgDirection] as? Double
                 self.speed = gps![kCGImagePropertyGPSSpeed] as? Double
+                print("speed")
+                print(self.speed)
             }
             completion()
         })

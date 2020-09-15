@@ -46,8 +46,8 @@ class MetaDataVC: UIViewController{
     
     fileprivate func showStartButton() {
         startButton = UIButton(type: .roundedRect)
-        startButton!.makeActionButton(title: "Metadaten \n laden")
-        startButton!.addTarget(self, action: #selector(self.startButtonPressed), for: .touchUpInside)
+        startButton!.makeActionButton(title: "Metadaten \n laden", view: self.view)
+        //!.addTarget(self, action: #selector(self.startButtonPressed), for: .touchUpInside)
         self.view.addSubview(startButton!)
         startButton!.translatesAutoresizingMaskIntoConstraints = false
         let centerYAnchorConstraint = startButton!.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor)
@@ -74,8 +74,8 @@ class MetaDataVC: UIViewController{
     
     fileprivate func showPermissionButton() {
         grantPermissionButton = UIButton(type: .roundedRect)
-        grantPermissionButton!.makeActionButton(title: "Zugriff \n erlauben")
-        grantPermissionButton!.addTarget(self, action: #selector(self.grantPermissionButtonPressed), for: .touchUpInside)
+        grantPermissionButton!.makeActionButton(title: "Zugriff \n erlauben", view: self.view)
+        //grantPermissionButton!.addTarget(self, action: #selector(self.grantPermissionButtonPressed), for: .touchUpInside)
         self.view.addSubview(grantPermissionButton!)
         grantPermissionButton!.translatesAutoresizingMaskIntoConstraints = false
         let centerYAnchorConstraint = grantPermissionButton!.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor)

@@ -150,7 +150,7 @@ class MicrophoneViewController: UIViewController, AVAudioRecorderDelegate{
     
     fileprivate func showStartButton() {
         startButton = UIButton(type: .roundedRect)
-        startButton!.makeActionButton(title: "Aufnahme \n starten")
+        startButton!.makeActionButton(title: "Aufnahme \n starten", view: self.view)
         startButton!.addTarget(self, action: #selector(self.startButtonPressed), for: .touchUpInside)
         self.view.addSubview(startButton!)
         startButton!.translatesAutoresizingMaskIntoConstraints = false
@@ -163,7 +163,7 @@ class MicrophoneViewController: UIViewController, AVAudioRecorderDelegate{
     
     fileprivate func showPermissionButton() {
         grantPermissionButton = UIButton(type: .roundedRect)
-        grantPermissionButton!.makeActionButton(title: "Zugriff \n erlauben")
+        grantPermissionButton!.makeActionButton(title: "Zugriff \n erlauben", view: self.view)
         grantPermissionButton!.addTarget(self, action: #selector(self.grantPermissionButtonPressed), for: .touchUpInside)
         self.view.addSubview(grantPermissionButton!)
         grantPermissionButton!.translatesAutoresizingMaskIntoConstraints = false
