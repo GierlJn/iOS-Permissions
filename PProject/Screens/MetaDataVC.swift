@@ -47,14 +47,7 @@ class MetaDataVC: UIViewController{
     fileprivate func showStartButton() {
         startButton = UIButton(type: .roundedRect)
         startButton!.makeActionButton(title: "Metadaten \n laden", view: self.view)
-        //!.addTarget(self, action: #selector(self.startButtonPressed), for: .touchUpInside)
-        self.view.addSubview(startButton!)
-        startButton!.translatesAutoresizingMaskIntoConstraints = false
-        let centerYAnchorConstraint = startButton!.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor)
-        let margins = view.layoutMarginsGuide
-        let centerXAnchorConstraint = startButton!.centerXAnchor.constraint(equalTo: margins.centerXAnchor)
-        centerYAnchorConstraint.isActive = true
-        centerXAnchorConstraint.isActive = true
+        startButton!.addTarget(self, action: #selector(self.startButtonPressed), for: .touchUpInside)
     }
     
     fileprivate func showInfoLabel(){
@@ -64,11 +57,7 @@ class MetaDataVC: UIViewController{
         infoLabel?.textAlignment = .center
         self.view.addSubview(infoLabel!)
         infoLabel!.translatesAutoresizingMaskIntoConstraints = false
-        let centerYAnchorConstraint = infoLabel!.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor)
-        let margins = view.layoutMarginsGuide
-        let centerXAnchorConstraint = infoLabel!.centerXAnchor.constraint(equalTo: margins.centerXAnchor)
-        centerYAnchorConstraint.isActive = true
-        centerXAnchorConstraint.isActive = true
+        infoLabel!.centerInSuperView(superView: self.view)
         
     }
     

@@ -15,6 +15,7 @@
 		B950691F245899580011B405 /* UIButton+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B950691E245899580011B405 /* UIButton+ext.swift */; };
 		B969F7A22434713900B77C8E /* MetaDataVC+TableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B969F7A12434713900B77C8E /* MetaDataVC+TableViewDelegate.swift */; };
 		B969F7A42434798200B77C8E /* SensorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B969F7A32434798200B77C8E /* SensorsViewController.swift */; };
+		B9AAC4E42510E5030020E3F5 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AAC4E32510E5030020E3F5 /* UIView+Ext.swift */; };
 		B9ABA2CB241B721300F324F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9ABA2CA241B721300F324F0 /* AppDelegate.swift */; };
 		B9ABA2CD241B721300F324F0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9ABA2CC241B721300F324F0 /* SceneDelegate.swift */; };
 		B9ABA2CF241B721300F324F0 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9ABA2CE241B721300F324F0 /* CameraViewController.swift */; };
@@ -37,6 +38,7 @@
 		B950691E245899580011B405 /* UIButton+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+ext.swift"; sourceTree = "<group>"; };
 		B969F7A12434713900B77C8E /* MetaDataVC+TableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MetaDataVC+TableViewDelegate.swift"; sourceTree = "<group>"; };
 		B969F7A32434798200B77C8E /* SensorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorsViewController.swift; sourceTree = "<group>"; };
+		B9AAC4E32510E5030020E3F5 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		B9ABA2C7241B721300F324F0 /* PProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9ABA2CA241B721300F324F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B9ABA2CC241B721300F324F0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -73,11 +75,11 @@
 		B96BE8E7250CC20000AAE43D /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				B9ABA2CE241B721300F324F0 /* CameraViewController.swift */,
 				B9B73D88242E0866008A5B8D /* MetaDataVC.swift */,
 				B969F7A12434713900B77C8E /* MetaDataVC+TableViewDelegate.swift */,
 				B969F7A32434798200B77C8E /* SensorsViewController.swift */,
 				B93C3603245C2D050054072F /* MicrophoneViewController.swift */,
-				B9ABA2CE241B721300F324F0 /* CameraViewController.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -107,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				B950691E245899580011B405 /* UIButton+ext.swift */,
+				B9AAC4E32510E5030020E3F5 /* UIView+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -240,6 +243,7 @@
 				B9C2206F2427D22F00EF7C58 /* ImageCollectionViewCell.swift in Sources */,
 				B950691F245899580011B405 /* UIButton+ext.swift in Sources */,
 				B93C3604245C2D050054072F /* MicrophoneViewController.swift in Sources */,
+				B9AAC4E42510E5030020E3F5 /* UIView+Ext.swift in Sources */,
 				B9C220662427CF9500EF7C58 /* ImageCollectionViewProvider.swift in Sources */,
 				B9B73D89242E0866008A5B8D /* MetaDataVC.swift in Sources */,
 				B909C3CD242CBA9E0026936E /* BackImageCollectionViewCell.swift in Sources */,
