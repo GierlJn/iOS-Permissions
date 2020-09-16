@@ -27,13 +27,13 @@ extension MetaDataVC: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch(section){
         case 0:
-            return "Foto"
+            return "Media"
         case 1:
-            return "Gerät"
+            return "Device"
         case 2:
-            return "Objektiv"
+            return "Camera"
         case 3:
-            return "GPS Daten"
+            return "GPS Data"
         default:
             return ""
         }
@@ -51,18 +51,18 @@ extension MetaDataVC: UITableViewDelegate, UITableViewDataSource{
         case 0:
             switch(indexPath.row){
             case 0:
-                cell.configureCell(keyLabel: "Datum", valueLabel: formatter.string(from: (selectedImage.phAsset.creationDate)!))
+                cell.configureCell(keyLabel: "Date", valueLabel: formatter.string(from: (selectedImage.phAsset.creationDate)!))
             case 1:
-                cell.configureCell(keyLabel: "Auflösung", valueLabel: "\(selectedImage.width ?? 0) x \(selectedImage.height ?? 0)")
+                cell.configureCell(keyLabel: "Resolution", valueLabel: "\(selectedImage.width ?? 0) x \(selectedImage.height ?? 0)")
             default:
                 return cell
             }
         case 1:
             switch(indexPath.row){
             case 0:
-                cell.configureCell(keyLabel: "Gerät", valueLabel: selectedImage.model)
+                cell.configureCell(keyLabel: "Model", valueLabel: selectedImage.model)
             case 1:
-                cell.configureCell(keyLabel: "Hersteller", valueLabel: selectedImage.manufacturer)
+                cell.configureCell(keyLabel: "Manufacturer", valueLabel: selectedImage.manufacturer)
             case 2:
                 cell.configureCell(keyLabel: "Software", valueLabel: selectedImage.software)
             default:
@@ -71,24 +71,24 @@ extension MetaDataVC: UITableViewDelegate, UITableViewDataSource{
         case 2:
             switch(indexPath.row){
             case 0:
-                cell.configureCell(keyLabel: "Name", valueLabel: selectedImage.lensModel)
+                cell.configureCell(keyLabel: "Lens Model", valueLabel: selectedImage.lensModel)
             case 1:
-                cell.configureCell(keyLabel: "Hersteller", valueLabel: selectedImage.lensManufcaturer)
+                cell.configureCell(keyLabel: "Manufacturer", valueLabel: selectedImage.lensManufcaturer)
             default:
                 return cell
             }
         case 3:
             switch(indexPath.row){
             case 0:
-                cell.configureCell(keyLabel: "Breitengrad", valueLabel: String(format: "%.3f°", selectedImage.latitude ?? 0))
+                cell.configureCell(keyLabel: "Latitude", valueLabel: String(format: "%.3f°", selectedImage.latitude ?? 0))
             case 1:
-                cell.configureCell(keyLabel: "Längengrad", valueLabel: String(format: "%.3f°", selectedImage.longitude ?? 0))
+                cell.configureCell(keyLabel: "Longitude", valueLabel: String(format: "%.3f°", selectedImage.longitude ?? 0))
             case 2:
-                cell.configureCell(keyLabel: "Höhe", valueLabel: String(format: "%.3fm", selectedImage.altitude ?? 0))
+                cell.configureCell(keyLabel: "Altitude", valueLabel: String(format: "%.3fm", selectedImage.altitude ?? 0))
             case 3:
-                cell.configureCell(keyLabel: "Kamera Richtung", valueLabel: String(format: "%.3f°", selectedImage.direction ?? 0))
+                cell.configureCell(keyLabel: "Direction", valueLabel: String(format: "%.3f°", selectedImage.direction ?? 0))
             case 4:
-                cell.configureCell(keyLabel: "Geschwindigkeit", valueLabel: String(format: "%.2f km/h", selectedImage.phAsset.location?.speed ?? 0 * 3.6)) //m/s to km/
+                cell.configureCell(keyLabel: "Speed", valueLabel: String(format: "%.2f km/h", selectedImage.phAsset.location?.speed ?? 0 * 3.6)) //m/s to km/
             default:
                 return cell
             }

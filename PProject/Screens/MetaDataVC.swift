@@ -30,8 +30,11 @@ class MetaDataVC: UIViewController{
     var startButton:UIButton?
     var infoLabel:UILabel?
     
+    var coverView = UIView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureCoverView()
         setupTableView()
     }
     
@@ -44,6 +47,12 @@ class MetaDataVC: UIViewController{
         }
     }
     
+    fileprivate func configureCoverView(){
+        self.view.addSubview(coverView)
+        coverView.pinToEdges(of: self.view)
+        coverView.backgroundColor = .white
+    }
+    
     fileprivate func showStartButton() {
         startButton = UIButton(type: .roundedRect)
         startButton!.makeActionButton(title: "Start", view: self.view)
@@ -53,7 +62,7 @@ class MetaDataVC: UIViewController{
     fileprivate func showInfoLabel(){
         infoLabel = UILabel()
         infoLabel!.lineBreakMode = .byWordWrapping
-        infoLabel!.text = String(format: "%lu photos / videos were found.", UInt(self.images.count))
+        infoLabel!.text = String(format: "%lu photos / videos loaded.", UInt(self.images.count))
         infoLabel?.textAlignment = .center
         self.view.addSubview(infoLabel!)
         infoLabel!.translatesAutoresizingMaskIntoConstraints = false
@@ -85,8 +94,11 @@ class MetaDataVC: UIViewController{
     @objc func startButtonPressed(){
         let auth = PHPhotoLibrary.authorizationStatus()
         if auth == .authorized {
-            startButton?.isHidden = true
-            startButton?.removeFromSuperview()
+            DispatchQueue.main.async {
+                self.startButton?.isHidden = true
+                self.startButton?.removeFromSuperview()
+                self.coverView.removeFromSuperview()
+            }
             self.fetchPhotos()
             self.setupAnnotations()
         }
