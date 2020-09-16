@@ -36,6 +36,8 @@ class CameraViewController: UIViewController,  UIImagePickerControllerDelegate, 
     var grantPermissionButton:UIButton?
     var startButton:UIButton?
     
+    var coverView = UIView()
+    
     @IBOutlet weak var imagesTakenLabel: UILabel!
     
     @IBOutlet weak var backCameraCollectionView: UICollectionView!
@@ -52,11 +54,18 @@ class CameraViewController: UIViewController,  UIImagePickerControllerDelegate, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureCoverView()
         updateStatusLabel()
         setupCollectionView()
         frontCameraSampleBufferDelegate.frontDelegate = self
         backCameraSampleBufferDelegate.backDelegate = self
         showActionButton()
+    }
+    
+    fileprivate func configureCoverView(){
+        self.view.addSubview(coverView)
+        coverView.pinToEdges(of: self.view)
+        coverView.backgroundColor = .white
     }
     
     fileprivate func showActionButton() {
@@ -70,13 +79,13 @@ class CameraViewController: UIViewController,  UIImagePickerControllerDelegate, 
     
     fileprivate func showStartButton() {
         startButton = UIButton(type: .roundedRect)
-        startButton!.makeActionButton(title: "Kameraaufnahmen \n starten", view: self.view)
+        startButton!.makeActionButton(title: "Start", view: self.view)
         startButton!.addTarget(self, action: #selector(self.startButtonPressed), for: .touchUpInside)
     }
     
     fileprivate func showPermissionButton() {
         grantPermissionButton = UIButton(type: .roundedRect)
-        grantPermissionButton!.makeActionButton(title: "Zugriff \n erlauben", view: self.view)
+        grantPermissionButton!.makeActionButton(title: "Grant \n permission", view: self.view)
         grantPermissionButton!.addTarget(self, action: #selector(self.grantPermissionButtonPressed), for: .touchUpInside)
     }
     
@@ -95,10 +104,7 @@ class CameraViewController: UIViewController,  UIImagePickerControllerDelegate, 
         let authStatus = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
         if authStatus == .authorized {
             startButton?.removeFromSuperview()
-            statusLabel.isHidden = false
-            backCameraLabel.isHidden = false
-            frontCameraLabel.isHidden = false
-            countLabel.isHidden = false
+            coverView.removeFromSuperview()
             setupBackCameraSession()
         }
     }
@@ -141,7 +147,7 @@ class CameraViewController: UIViewController,  UIImagePickerControllerDelegate, 
     }
 
     func updateLabel(){
-        self.imagesTakenLabel.text = "Aufnahmen: \(self.imageCollectionViewProvider.images.count + self.backImageCollectionProvider.images.count)"
+        self.imagesTakenLabel.text = "Photos taken: \(self.imageCollectionViewProvider.images.count + self.backImageCollectionProvider.images.count)"
     }
     
     func finishFrontSession() {

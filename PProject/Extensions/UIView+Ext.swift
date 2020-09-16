@@ -3,7 +3,6 @@
 import UIKit
 
 extension UIView{
-    
 
     func centerInSuperView(superView: UIView){
         let centerYAnchorConstraint = self.centerYAnchor.constraint(equalTo: superView.safeAreaLayoutGuide.centerYAnchor)
@@ -13,4 +12,13 @@ extension UIView{
         centerXAnchorConstraint.isActive = true
     }
     
+     func pinToEdges(of superview: UIView){
+           translatesAutoresizingMaskIntoConstraints = false
+           NSLayoutConstraint.activate([
+               topAnchor.constraint(equalTo: superview.topAnchor),
+               leadingAnchor.constraint(equalTo: superview.leadingAnchor),
+               trailingAnchor.constraint(equalTo: superview.trailingAnchor),
+               bottomAnchor.constraint(equalTo: superview.bottomAnchor)
+           ])
+       }
 }

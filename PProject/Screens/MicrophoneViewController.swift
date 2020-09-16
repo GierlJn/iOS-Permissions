@@ -12,10 +12,11 @@ class MicrophoneViewController: UIViewController, AVAudioRecorderDelegate{
     var audioRecorder: AVAudioRecorder!
 
     @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var statusLabel2: UILabel!
+    
+    
     var counter = 0.0
     var timer = Timer()
-    
-    @IBOutlet weak var statusLabel2: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
