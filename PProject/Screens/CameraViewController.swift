@@ -123,7 +123,7 @@ class CameraViewController: UIViewController,  UIImagePickerControllerDelegate, 
         case .backCameraActive:
             labelString.append(contentsOf: "Back camera active")
         case .inactive:
-            labelString.append(contentsOf: "Frontkamera aktiv")
+            labelString.append(contentsOf: "No camera inactive")
         }
         return labelString
     }

@@ -24,6 +24,7 @@
 		B9ABA2D9241B721400F324F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9ABA2D7241B721400F324F0 /* LaunchScreen.storyboard */; };
 		B9B73D89242E0866008A5B8D /* MetaDataVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B73D88242E0866008A5B8D /* MetaDataVC.swift */; };
 		B9B73D8B242E089E008A5B8D /* ImageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B73D8A242E089E008A5B8D /* ImageData.swift */; };
+		B9BF11A02512379600394260 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BF119F2512379600394260 /* UIViewController+Ext.swift */; };
 		B9C220662427CF9500EF7C58 /* ImageCollectionViewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C220652427CF9500EF7C58 /* ImageCollectionViewProvider.swift */; };
 		B9C2206F2427D22F00EF7C58 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C2206D2427D22F00EF7C58 /* ImageCollectionViewCell.swift */; };
 		B9C220702427D22F00EF7C58 /* ImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9C2206E2427D22F00EF7C58 /* ImageCollectionViewCell.xib */; };
@@ -49,6 +50,7 @@
 		B9ABA2DA241B721400F324F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B9B73D88242E0866008A5B8D /* MetaDataVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetaDataVC.swift; sourceTree = "<group>"; };
 		B9B73D8A242E089E008A5B8D /* ImageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageData.swift; sourceTree = "<group>"; };
+		B9BF119F2512379600394260 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		B9C220652427CF9500EF7C58 /* ImageCollectionViewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewProvider.swift; sourceTree = "<group>"; };
 		B9C2206D2427D22F00EF7C58 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		B9C2206E2427D22F00EF7C58 /* ImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 			children = (
 				B950691E245899580011B405 /* UIButton+ext.swift */,
 				B9AAC4E32510E5030020E3F5 /* UIView+Ext.swift */,
+				B9BF119F2512379600394260 /* UIViewController+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -241,6 +244,7 @@
 			files = (
 				B9B73D8B242E089E008A5B8D /* ImageData.swift in Sources */,
 				B9C2206F2427D22F00EF7C58 /* ImageCollectionViewCell.swift in Sources */,
+				B9BF11A02512379600394260 /* UIViewController+Ext.swift in Sources */,
 				B950691F245899580011B405 /* UIButton+ext.swift in Sources */,
 				B93C3604245C2D050054072F /* MicrophoneViewController.swift in Sources */,
 				B9AAC4E42510E5030020E3F5 /* UIView+Ext.swift in Sources */,

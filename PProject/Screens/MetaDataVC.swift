@@ -46,14 +46,14 @@ class MetaDataVC: UIViewController{
     
     fileprivate func showStartButton() {
         startButton = UIButton(type: .roundedRect)
-        startButton!.makeActionButton(title: "Metadaten \n laden", view: self.view)
+        startButton!.makeActionButton(title: "Start", view: self.view)
         startButton!.addTarget(self, action: #selector(self.startButtonPressed), for: .touchUpInside)
     }
     
     fileprivate func showInfoLabel(){
         infoLabel = UILabel()
         infoLabel!.lineBreakMode = .byWordWrapping
-        infoLabel!.text = String(format: "Daten aus %lu Bildern wurden geladen.", UInt(self.images.count))
+        infoLabel!.text = String(format: "%lu photos / videos were found.", UInt(self.images.count))
         infoLabel?.textAlignment = .center
         self.view.addSubview(infoLabel!)
         infoLabel!.translatesAutoresizingMaskIntoConstraints = false
@@ -63,7 +63,7 @@ class MetaDataVC: UIViewController{
     
     fileprivate func showPermissionButton() {
         grantPermissionButton = UIButton(type: .roundedRect)
-        grantPermissionButton!.makeActionButton(title: "Zugriff \n erlauben", view: self.view)
+        grantPermissionButton!.makeActionButton(title: "Grant \n permission", view: self.view)
         grantPermissionButton!.addTarget(self, action: #selector(self.grantPermissionButtonPressed), for: .touchUpInside)
     }
     
@@ -77,14 +77,7 @@ class MetaDataVC: UIViewController{
                 }
                 
             } else if auth == .denied {
-                DispatchQueue.main.async {
-                let alert = UIAlertController(title: "", message: "Berechtigung wird benötigt um Daten aus den Fotos zu laden.", preferredStyle: .alert)
-                let okayButton = UIAlertAction(title: "Ok", style: .default, handler: { action in
-                    alert.dismiss(animated: true)
-                })
-                alert.addAction(okayButton)
-                self.present(alert, animated: true)
-                }
+                self.showPermissionErrorAlertOnMainThread()
             }
         })
     }
@@ -109,7 +102,7 @@ class MetaDataVC: UIViewController{
     
     private func fetchPhotos() {
         let options = PHFetchOptions()
-        //options.includeHiddenAssets = true
+        options.includeHiddenAssets = true
         var locations = [ImageData]()
         let photos = PHAsset.fetchAssets(with: .image, options: options)
         for index in 0..<photos.count{
