@@ -11,8 +11,8 @@ class MicrophoneViewController: UIViewController, AVAudioRecorderDelegate{
     var recordingSession: AVAudioSession!
     var audioRecorder: AVAudioRecorder!
 
+    @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
-    @IBOutlet weak var statusLabel2: UILabel!
     
     
     var counter = 0.0
@@ -28,7 +28,7 @@ class MicrophoneViewController: UIViewController, AVAudioRecorderDelegate{
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        statusLabel2.text = "Aufnahme nicht aktiv"
+        statusLabel.text = "Microphone not active"
     }
     
     
@@ -39,12 +39,12 @@ class MicrophoneViewController: UIViewController, AVAudioRecorderDelegate{
     func stopTimer(){
         timer.invalidate()
         counter = 0.0
-        statusLabel.text = String(counter)
+        timeLabel.text = String(counter)
     }
     
     @objc func updateTimer() {
         counter = counter + 0.1
-        statusLabel.text = String(format: "%.1f", counter)
+        timeLabel.text = String(format: "%.1f", counter)
     }
     
     func checkPermission() -> Bool {
@@ -86,14 +86,7 @@ class MicrophoneViewController: UIViewController, AVAudioRecorderDelegate{
                         self.grantPermissionButton?.removeFromSuperview()
                         self.showStartButton()
                     } else {
-                        DispatchQueue.main.async {
-                        let alert = UIAlertController(title: "", message: "Berechtigung für Mikrofon wird benötigt.", preferredStyle: .alert)
-                        let okayButton = UIAlertAction(title: "Ok", style: .default, handler: { action in
-                            alert.dismiss(animated: true)
-                        })
-                        alert.addAction(okayButton)
-                        self.present(alert, animated: true)
-                        }
+                        self.showPermissionErrorAlertOnMainThread()
                     }
                 }
             }
@@ -111,7 +104,7 @@ class MicrophoneViewController: UIViewController, AVAudioRecorderDelegate{
     }
     
     func startRecording() {
-        let audioFilename = getDocumentsDirectory().appendingPathComponent("aufnahme.m4a")
+        let audioFilename = getDocumentsDirectory().appendingPathComponent("recording.m4a")
 
         let settings = [
             AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
@@ -125,8 +118,8 @@ class MicrophoneViewController: UIViewController, AVAudioRecorderDelegate{
             audioRecorder.delegate = self
             audioRecorder.record()
             startTimer()
-            startButton!.setTitle("Aufnahme beenden", for: .normal)
-            statusLabel2.text = "Aufnahme aktiv"
+            startButton!.setTitle("Stop", for: .normal)
+            statusLabel.text = "Microphone active"
         } catch {
             finishRecording(success: false)
         }
@@ -136,11 +129,11 @@ class MicrophoneViewController: UIViewController, AVAudioRecorderDelegate{
         audioRecorder.stop()
         audioRecorder = nil
         stopTimer()
-        statusLabel2.text = "Aufnahme nicht aktiv"
+        statusLabel.text = "Microphone not active"
         if success {
-            startButton!.setTitle("Aufnahme Neustarten", for: .normal)
+            startButton!.setTitle("Restart", for: .normal)
         } else {
-            startButton!.setTitle("Aufnahme Starten", for: .normal)
+            startButton!.setTitle("Start", for: .normal)
         }
     }
     
@@ -151,13 +144,13 @@ class MicrophoneViewController: UIViewController, AVAudioRecorderDelegate{
     
     fileprivate func showStartButton() {
         startButton = UIButton(type: .roundedRect)
-        startButton!.makeActionButton(title: "Aufnahme \n starten", view: self.view)
+        startButton!.makeActionButton(title: "Start", view: self.view)
         startButton!.addTarget(self, action: #selector(self.startButtonPressed), for: .touchUpInside)
     }
     
     fileprivate func showPermissionButton() {
         grantPermissionButton = UIButton(type: .roundedRect)
-        grantPermissionButton!.makeActionButton(title: "Zugriff \n erlauben", view: self.view)
+        grantPermissionButton!.makeActionButton(title: "Grant \n permission", view: self.view)
         grantPermissionButton!.addTarget(self, action: #selector(self.grantPermissionButtonPressed), for: .touchUpInside)
     }
 }

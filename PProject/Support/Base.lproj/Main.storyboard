@@ -166,7 +166,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="837.60000000000002" y="-0.44977511244377816"/>
+            <point key="canvasLocation" x="934" y="-271"/>
         </scene>
         <!--Sensors-->
         <scene sceneID="wg7-f3-ORb">
@@ -210,7 +210,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3DN-1n-JKx">
                                 <rect key="frame" x="43.5" y="258.5" width="288" height="150"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Beschleunigungssensor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s0X-1s-UwW">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Accelerometer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s0X-1s-UwW">
                                         <rect key="frame" x="8" y="8" width="250" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="250" id="S8C-Km-V00"/>
@@ -332,7 +332,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3049" y="0.0"/>
+            <point key="canvasLocation" x="3002" y="-261"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -352,7 +352,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="0.0" y="0.0"/>
+            <point key="canvasLocation" x="127" y="-271"/>
         </scene>
         <!--Geotags-->
         <scene sceneID="R3j-wW-qjP">
@@ -396,9 +396,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="25l-Wz-mdu" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1551" y="0.0"/>
+            <point key="canvasLocation" x="1612" y="-261"/>
         </scene>
-        <!--Mikrofon-->
+        <!--Microphone-->
         <scene sceneID="f4q-eE-cbK">
             <objects>
                 <viewController id="0pr-w1-2gZ" customClass="MicrophoneViewController" customModule="PProject" sceneMemberID="viewController">
@@ -421,7 +421,7 @@
                                     <constraint firstAttribute="height" constant="44" id="d7n-oC-ub9"/>
                                 </constraints>
                                 <items>
-                                    <navigationItem title="Mikrofon" id="E01-Qf-W1C"/>
+                                    <navigationItem title="Microphone" id="E01-Qf-W1C"/>
                                 </items>
                             </navigationBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Uz-rY-Jwg">
@@ -451,15 +451,15 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="HZq-zD-YEt"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Mikrofon" image="mic" catalog="system" id="p4k-RR-k9O"/>
+                    <tabBarItem key="tabBarItem" title="Microphone" image="mic" catalog="system" id="p4k-RR-k9O"/>
                     <connections>
-                        <outlet property="statusLabel" destination="MYc-Yw-hw2" id="mCe-48-2Jl"/>
-                        <outlet property="statusLabel2" destination="6Uz-rY-Jwg" id="CUn-hd-R9V"/>
+                        <outlet property="statusLabel" destination="6Uz-rY-Jwg" id="CUn-hd-R9V"/>
+                        <outlet property="timeLabel" destination="MYc-Yw-hw2" id="mCe-48-2Jl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7c5-Tx-99Y" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2295" y="0.0"/>
+            <point key="canvasLocation" x="2300" y="-261"/>
         </scene>
     </scenes>
     <resources>
