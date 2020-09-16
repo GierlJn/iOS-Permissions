@@ -12,6 +12,8 @@ It uses the permission for Camera Usage to save single frames of the AVCaptureVi
 
 This permission allows apps to read all media in the Photos app, both on the device and the cloud. Additionally apps can read the connected metadata of the media files. Metadata can hold privacy sensitive data like device information and exact gps coordinates.
 
+![geotag2](https://user-images.githubusercontent.com/33352637/93338051-346b8d00-f82a-11ea-9a17-797211b6f7ad.png)
+
 ## Microphone Permission
 
 Microphones can be recorded at any time without notification on the device.
